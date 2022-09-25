@@ -1,8 +1,13 @@
-import Header from "../components/header/header";
 import Router from "next/router";
 import { useState, useEffect } from "react";
+import Footer from "./footer";
+import Header from "./header";
 
-const Layout = (props) => {
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+
+const Layout:React.FC<LayoutProps> = (props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -24,6 +29,7 @@ const Layout = (props) => {
         </div>
       )}
       <Header />
+      <Footer />
       <main>{props.children}</main>
     </div>
   );
