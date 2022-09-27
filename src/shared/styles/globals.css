@@ -42,3 +42,19 @@ p {
   flex-direction: column;
   justify-content: flex-end;
 }
+
+.container {
+  padding: 0 2.4rem ;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 3.9rem ;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 0 16.5rem ;
+  }
+}
