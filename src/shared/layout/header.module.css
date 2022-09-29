@@ -5,14 +5,14 @@
   top: 0;
   z-index: 99;
   padding: 3.2rem 2.4rem;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
   max-width: 165rem;
   margin: auto;
-  display: grid;
-  grid-template-columns: 143px 1fr 143px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -37,6 +37,8 @@
   .logoContainer {
     justify-self: left;
   }
+
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -46,6 +48,11 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  .container {
+    display: grid;
+    grid-template-columns: 143px 1fr 143px;
+  }
+  
   .hamburgerContainer {
     display: none;
   }
@@ -71,3 +78,4 @@
     padding: 3.2rem 16.5rem;
   }
 }
+
