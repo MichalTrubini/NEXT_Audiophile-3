@@ -1,0 +1,35 @@
+.product {
+    border-radius: 8px;
+}
+
+.productOne {
+    background: url('../../../public/assets/home/desktop/pattern-circles.svg') no-repeat;
+    background-position: center -120px;
+    background-size: 170%;
+    background-color: var(--orange);
+    text-align: center;
+    padding: 6rem 2.4rem 5.5rem;
+}
+
+.headerLight {
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 3.6rem;
+    line-height: 4rem;
+    letter-spacing: 1.29px;
+    font-weight: 700;
+    padding: 0 2rem;
+    margin-bottom: 2.4rem;
+}
+
+.about {
+    color: var(--white);
+    line-height: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 2.4rem;
+}
+
+.imageContainer {
+    width: 60%;
+    margin: 0 auto 4rem;
+}

@@ -5,7 +5,7 @@ interface Button {
 
 const Button: React.FC<Button> = (props) => {
     return (
-        <button className={props.className}>{props.text}</button>
+        <button className={`button ${props.className}`}>{props.text}</button>
     )
 }
 

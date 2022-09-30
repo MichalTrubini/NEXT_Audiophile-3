@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Hero from "../src/modules/home/hero";
+import Products from "../src/modules/home/products";
 import Categories from "../src/shared/components/category/categories";
 import Promo from "../src/shared/components/content/promo";
 
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <Hero />
       <div className="container">
         <Categories />
+        <Products />
         <Promo/>
       </div>
     </div>

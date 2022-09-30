@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: 6.8rem;
-    margin-top: 10rem;
     padding: 9.2rem 0 12rem;
 }
 
@@ -50,7 +49,6 @@
     .categories {
         flex-direction: row;
         gap: 1rem;
-        margin-top: 5rem;
         padding: 14.8rem  0 9.6rem
     }
 
@@ -62,7 +60,6 @@
 @media screen and (min-width:1440px) {
     .categories {
         gap: 3rem;
-        margin-top: 5rem;
         padding: 14.8rem  0 9.6rem
     }
 

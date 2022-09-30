@@ -47,16 +47,24 @@ p {
   padding: 0 2.4rem ;
 }
 
-.buttonLight {
-  background-color: var(--orange);
+.button {
   border: none;
   outline: none;
-  color: var(--white);
   text-transform: uppercase;
   font-size: 1.3rem;
   letter-spacing: 1px;
   font-weight: 700;
   padding: 1.5rem 3rem;
+}
+
+.buttonLight {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.buttonDark {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 @media screen and (min-width: 768px) {
