@@ -43,9 +43,7 @@
 
 @media screen and (min-width: 1024px) {
   .header {
-    padding: 3.2rem 8rem;
     border-bottom: none;
-    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .container {
