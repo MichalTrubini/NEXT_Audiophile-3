@@ -1,5 +1,14 @@
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    margin-bottom: 12rem;
+}
+
 .product {
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
 .productOne {
@@ -9,6 +18,42 @@
     background-color: var(--orange);
     text-align: center;
     padding: 6rem 2.4rem 5.5rem;
+}
+
+.productTwo {
+    padding: 27vw 2.4rem;
+    width: 100%;
+}
+
+.productThree {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.productOneContent {
+    max-width: 34rem;
+    margin: auto;
+}
+
+.productThreeContent {
+    background-color: var(--grey);
+    border-radius: 8px;
+    padding: 4.1rem 2.4rem;
+}
+
+.imageContainerTwo {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.imageContainerThree {
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .headerLight {
@@ -22,6 +67,18 @@
     margin-bottom: 2.4rem;
 }
 
+.headerDark {
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 2.8rem;
+    line-height: 3.8rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 3.2rem;
+    position: relative;
+    z-index: 9;
+}
+
 .about {
     color: var(--white);
     line-height: 2.5rem;
@@ -31,5 +88,55 @@
 
 .imageContainer {
     width: 60%;
+    max-width: 200px;
     margin: 0 auto 4rem;
+}
+
+@media screen and (min-width:575px) {
+    .productThree {
+        flex-direction: row;
+    }
+
+    .productTwo {
+        padding: 10vw 2.4rem;
+    }
+
+    .imageContainerThree, .productThreeContent {
+        width: 50%;
+    }
+
+    .productThreeContent {
+        padding: 0 2.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width:768px) {
+
+    .productOne {
+        padding: 6rem 0;
+        background: url('../../../public/assets/home/desktop/pattern-circles.svg') no-repeat;
+        background-color: var(--orange);
+        background-position: center -360px;
+        background-size: 140%;
+    }
+    .headerLight {
+        font-size: 5.6rem;
+        line-height: 5.8rem;
+    }
+
+    .imageContainer {
+        margin-bottom: 7rem;
+    }
+    .productTwo {
+        padding: 5vw 2.4rem;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .productTwo {
+        padding: 10.1rem 9.5rem;
+    }
 }
