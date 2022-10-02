@@ -76,9 +76,20 @@ p {
   z-index: 9;
 }
 
+.categoryProducts {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 17.2rem;
+  gap: 3.2rem;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     padding: 0 3.9rem ;
+  }
+
+  .categoryProducts {
+    gap: 12rem;
   }
 }
 

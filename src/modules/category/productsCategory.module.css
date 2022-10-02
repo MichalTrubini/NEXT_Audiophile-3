@@ -1,0 +1,62 @@
+.imageContainer {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 3.2rem;
+}
+
+.content {
+  text-align: center;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: 10px;
+}
+
+.header {
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 3.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0 4rem;
+  margin-bottom: 2.4rem;
+}
+
+.about {
+  line-height: 2.5rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  margin-bottom: 2.4rem;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 3.2rem;
+    padding: 0 15rem;
+    font-size: 4rem;
+    line-height: 4.4rem;
+    letter-spacing: 1.46px;
+  }
+
+  .imageContainer {
+    margin-bottom: 5.2rem;
+  }
+
+  .about {
+    padding: 0 2.5rem;
+  }
+
+  .subtitle {
+    margin-bottom: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 950px) {
+
+}
