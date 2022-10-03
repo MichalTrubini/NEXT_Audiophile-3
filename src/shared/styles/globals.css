@@ -83,6 +83,15 @@ p {
   gap: 3.2rem;
 }
 
+.productOdd {
+  flex-direction: row;
+}
+
+.productEven {
+  flex-direction:row-reverse;
+}
+
+
 @media screen and (min-width: 768px) {
   .container {
     padding: 0 3.9rem ;
@@ -104,5 +113,9 @@ p {
   .container {
     padding: 0 16.5rem ;
     margin: auto;
+  }
+
+  .categoryProducts {
+    gap: 16rem;
   }
 }

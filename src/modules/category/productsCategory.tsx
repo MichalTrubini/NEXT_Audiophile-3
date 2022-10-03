@@ -7,14 +7,15 @@ interface Products {
   alt: string;
   title: string;
   about: string;
-  new: string;
+  new: boolean;
   width: number;
   height: number;
+  className:string
 }
 
 const ProductsCategory: React.FC<Products> = (props) => {
   return (
-    <div className={styles.product}>
+    <div className={`${styles.product} ${props.className}`}>
       <div className={styles.imageContainer}>
         <Image
           src={props.src}
@@ -25,7 +26,7 @@ const ProductsCategory: React.FC<Products> = (props) => {
         />
       </div>
       <div className={styles.content}>
-        <p className={styles.subtitle}>{props.new}</p>
+        {props.new === true && <p className={styles.subtitle}>new product</p>}
         <h1 className={styles.header}>{props.title}</h1>
         <p className={styles.about}>{props.about}</p>
         <Button className="buttonLight" text="see product" />

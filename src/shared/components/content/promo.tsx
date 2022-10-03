@@ -33,8 +33,8 @@ const Promo:React.FC<UsedImage> = () => {
 
   function imageSwitcher() {
     if (screenWidth < 376) return mobileImage;
-    if (screenWidth > 375 && screenWidth < 1025 ) return tabletImage;
-    if (screenWidth > 1024) return desktopImage;
+    if (screenWidth > 375 && screenWidth < 1024 ) return tabletImage;
+    if (screenWidth > 1023) return desktopImage;
   }
 
   return (

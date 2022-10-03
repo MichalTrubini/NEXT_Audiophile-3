@@ -12,6 +12,8 @@ const PageCategory = () => {
 
   const categoryData = data.filter((item) => item.category.includes(page));
 
+  const categoryDataAddCount = categoryData.map((item, i) => ({...item, count: i + 1}))
+
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const PageCategory = () => {
       <PageTitle title={page} />
       <div className="container">
         <div className="categoryProducts">
-          {categoryData.map((item) => (
+          {categoryDataAddCount.map((item) => (
             <ProductsCategory
               key={item.id}
               src={
@@ -79,8 +81,9 @@ const PageCategory = () => {
                   ? item.categoryImage.tablet
                   : item.categoryImage.desktop
               }
-              new={item.new === true ? "new product" : ""}
+              new={item.new}
               alt={item.name}
+              className={item.count % 2 ? 'productOdd' : 'productEven'}
               title={item.name}
               about={item.description}
               width={width()!}

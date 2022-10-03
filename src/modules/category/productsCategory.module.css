@@ -58,5 +58,32 @@
 }
 
 @media screen and (min-width: 950px) {
+ .product {
+    display: flex;
+    gap: 12.5rem;
+    justify-content: space-between;
+    align-items: center;
+ }
 
+ .imageContainer, .content {
+    width: 50%;
+    margin: 0;
+ }
+
+ .content {
+    text-align: left;
+ }
+
+ .header, .about {
+    padding: 0;
+ }
+
+ .about {
+    margin-bottom: 4rem;
+    padding-right: 2.475rem;
+ }
+
+ .header {
+    padding-right: 10rem;
+ }
 }
