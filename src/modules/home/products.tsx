@@ -8,7 +8,7 @@ import zx7Desktop from "../../../public/assets/home/desktop/image-speaker-zx7.jp
 import yx1Mobile from "../../../public/assets/home/mobile/image-earphones-yx1.jpg";
 import yx1Tablet from "../../../public/assets/home/tablet/image-earphones-yx1.jpg";
 import yx1Desktop from "../../../public/assets/home/desktop/image-earphones-yx1.jpg";
-import Button from "../../shared/components/UI/button";
+import ButtonLink from "../../shared/components/UI/buttonLink";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -62,7 +62,7 @@ const Products = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <Button className="buttonDark" text="see product"></Button>
+          <ButtonLink className="buttonDark" text="see product" link='/product/zx9-speaker'></ButtonLink>
         </div>
       </div>
       <div className={`${styles.product} ${styles.productTwo}`}>
@@ -70,7 +70,7 @@ const Products = () => {
           <Image src={imageSwitcherTwo()!} alt="zx9 speaker" />
         </div>
         <h2 className={styles.headerDark}>zx7 speaker</h2>
-        <Button className="buttonTransparent" text="see product"></Button>
+        <ButtonLink className="buttonTransparent" text="see product" link='/product/zx7-speaker'></ButtonLink>
       </div>
       <div className={`${styles.product} ${styles.productThree}`}>
         <div className={styles.imageContainerThree}>
@@ -78,7 +78,7 @@ const Products = () => {
         </div>
         <div className={styles.productThreeContent}>
           <h2 className={styles.headerDark}>YX1 EARPHONES</h2>
-          <Button className="buttonTransparent" text="see product"></Button>
+          <ButtonLink className="buttonTransparent" text="see product" link='/product/yx1-earphones'></ButtonLink>
         </div>
       </div>
     </div>

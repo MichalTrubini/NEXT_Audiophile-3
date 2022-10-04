@@ -1,4 +1,4 @@
-import Button from "../../shared/components/UI/button";
+import ButtonLink from "../../shared/components/UI/buttonLink";
 import styles from "./hero.module.css";
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Button className="buttonLight" text="see product" />
+        <ButtonLink className="buttonLight" text="see product" link='/product/xx99-mark-two-headphones'/>
       </div>
 
     </div>

@@ -1,12 +1,12 @@
-interface Button {
+interface AddToCart {
     text:string,
     className:string
 }
 
-const Button: React.FC<Button> = (props) => {
+const AddToCart: React.FC<AddToCart> = (props) => {
     return (
         <button className={`button ${props.className}`}>{props.text}</button>
     )
 }
 
-export default Button;
+export default AddToCart;
