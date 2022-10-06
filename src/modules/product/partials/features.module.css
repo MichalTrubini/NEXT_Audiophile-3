@@ -1,0 +1,66 @@
+.features,
+.featuresContent {
+  margin-bottom: 8.8rem;
+}
+
+.header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.86px;
+  margin-bottom: 2.4rem;
+}
+
+.featuresText {
+  line-height: 2.5rem;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: pre-line;
+}
+
+.listItem {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+}
+
+.quantity {
+  font-weight: 700;
+  color: var(--orange);
+  display: inline-block;
+  width: 40px;
+}
+
+.boxContent {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    font-size: 3.2rem;
+    margin-bottom: 3.2rem;
+  }
+  .featuresContent {
+    margin-bottom: 12rem;
+  }
+
+  .includes {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .features {
+    display: flex;
+    gap: 12.5rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .featuresContent {
+    min-width: 635px;
+    width: 40%;
+  }
+}

@@ -1,0 +1,10 @@
+.gallery {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 12rem;
+}
+
+.imageContainer {
+    border-radius: 8px;
+    overflow: hidden;
+}

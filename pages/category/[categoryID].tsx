@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import data from "../../data.json";
 import ProductsCategory from "../../src/modules/category/productsCategory";
 import { useState, useEffect } from "react";
+import useWindowDimensions from '../../utils/WindowDimensions'
 
 const PageCategory = () => {
   const router = useRouter();
@@ -12,24 +13,13 @@ const PageCategory = () => {
 
   const categoryData = data.filter((item) => item.category.includes(page));
 
+  const {width} = useWindowDimensions();
+
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-    const widthInitial = window.innerWidth;
-    setScreenWidth(widthInitial);
-
-    function getWindowDimensions() {
-      const widthCurrent = window.innerWidth;
-      return widthCurrent;
-    }
-
-    function handleResize() {
-      setScreenWidth(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    setScreenWidth(width);
+  }, [width]);
 
   //breakpoints for responsivity
   //these numbers can be changed based on what looks good
@@ -49,14 +39,14 @@ const PageCategory = () => {
   const desktopWidthImage = 1080;
   const desktopHeightImage = 1120;
 
-  const width = () => {
+  const imageWidth = () => {
     if (screenWidth < breakpointMobile) return mobileWidthImage;
     if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
       return tabletWidthImage;
     if (screenWidth > breakpointDesktop) return desktopWidthImage;
   };
 
-  const height = () => {
+  const imageHeight = () => {
     if (screenWidth < breakpointMobile) return mobileHeightImage;
     if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
       return tabletHeightImage;
@@ -85,8 +75,8 @@ const PageCategory = () => {
               title={item.name}
               slug={item.slug}
               about={item.description}
-              width={width()!}
-              height={height()!}
+              width={imageWidth()!}
+              height={imageHeight()!}
             />
           ))}
         </div>

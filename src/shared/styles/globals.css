@@ -36,6 +36,10 @@ p {
   font-weight: 500;
 }
 
+main {
+margin-top: 9rem;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -114,6 +118,10 @@ p {
   .container {
     padding: 0 16.5rem ;
     margin: auto;
+  }
+
+  main {
+    margin-top: 9.7rem;
   }
 
   .categoryProducts {

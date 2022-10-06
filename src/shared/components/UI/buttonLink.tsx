@@ -1,12 +1,7 @@
 import Link from 'next/link'
+import { IButtonLink } from '../../types/types';
 
-interface ButtonLink {
-    text:string,
-    className:string
-    link:string
-}
-
-const ButtonLink: React.FC<ButtonLink> = (props) => {
+const ButtonLink: React.FC<IButtonLink> = (props) => {
     return (
         <Link href={props.link}><p className={`button ${props.className}`}>{props.text}</p></Link>
     )

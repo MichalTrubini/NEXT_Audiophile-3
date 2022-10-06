@@ -1,0 +1,113 @@
+.productIntro {
+  margin-bottom: 8.8rem;
+}
+
+.imageContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 3.2rem;
+  display: block;
+  width: 100%;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  color: var(--orange);
+  letter-spacing: 10px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 2.4rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 3.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 2.4rem;
+}
+
+.about {
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 2.5rem;
+  margin-bottom: 2.4rem;
+}
+
+.price {
+  margin-bottom: 3.2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1.29px;
+  line-height: 2.5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .imageContainer {
+    width: 40%;
+    margin: 0;
+  }
+
+  .content {
+    width: 50%;
+  }
+
+  .productIntro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3.9rem;
+  }
+
+  .productIntro {
+    margin-bottom: 8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+    .imageContainer {
+      width: 37.5%;
+    }
+  
+    .content {
+      width: 50%;
+    }
+  
+    .productIntro {
+      gap: 6.9rem;
+    }
+  
+    .title,
+    .about,
+    .price {
+      margin-bottom: 3.2rem;
+    }
+  
+    .productIntro {
+      margin-bottom: 12rem;
+    }
+  }
+  
+@media screen and (min-width:1440px) {
+    .imageContainer {
+        width: 50%;
+      }
+    
+      .content {
+        width: 41%;
+      }
+    
+      .productIntro {
+        gap: 12.5rem;
+      }
+     
+      .productIntro {
+        margin-bottom: 16rem;
+      }
+
+      .title {
+        font-size: 4rem;
+        line-height: 4.8rem;
+        letter-spacing: 1.43px;
+      }
+}

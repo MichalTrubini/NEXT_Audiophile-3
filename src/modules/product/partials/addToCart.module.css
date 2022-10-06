@@ -1,0 +1,11 @@
+.form {
+    display: flex;
+    gap: 1.6rem;
+
+}
+
+.input {
+    width: 37%;
+    border: none;
+    background-color: var(--grey);
+}
