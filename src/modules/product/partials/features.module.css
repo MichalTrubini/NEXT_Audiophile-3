@@ -57,10 +57,22 @@
     gap: 12.5rem;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-bottom: 16rem;
   }
 
   .featuresContent {
     min-width: 635px;
     width: 40%;
+    margin: 0;
+  }
+
+  .includes {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .listItem {
+    margin-bottom: 0.8rem;
   }
 }

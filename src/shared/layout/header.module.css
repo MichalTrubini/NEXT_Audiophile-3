@@ -37,8 +37,6 @@
   .logoContainer {
     justify-self: left;
   }
-
-
 }
 
 @media screen and (min-width: 1024px) {
@@ -50,7 +48,7 @@
     display: grid;
     grid-template-columns: 143px 1fr 143px;
   }
-  
+
   .hamburgerContainer {
     display: none;
   }
@@ -69,6 +67,14 @@
     line-height: 2.5rem;
     letter-spacing: 2px;
   }
+
+  .logoContainer:hover, .listItem:hover, .cartContainer {
+    cursor: pointer;
+  }
+
+  .listItem:hover {
+    color: var(--orange);
+  } 
 }
 
 @media screen and (min-width: 1440px) {
@@ -76,4 +82,3 @@
     padding: 3.2rem 16.5rem;
   }
 }
-

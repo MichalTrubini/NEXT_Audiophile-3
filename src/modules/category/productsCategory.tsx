@@ -1,20 +1,9 @@
 import styles from "./productsCategory.module.css";
 import Image from "next/image";
 import ButtonLink from "../../shared/components/UI/buttonLink";
+import {IProductsCategory} from '../../../src/shared/types/types';
 
-interface Products {
-  src: string;
-  alt: string;
-  title: string;
-  about: string;
-  new: boolean;
-  width: number;
-  height: number;
-  className:string;
-  slug: string;
-}
-
-const ProductsCategory: React.FC<Products> = (props) => {
+const ProductsCategory: React.FC<IProductsCategory> = (props) => {
   return (
     <div className={`${styles.product} ${props.className}`}>
       <div className={styles.imageContainer}>

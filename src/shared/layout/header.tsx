@@ -10,10 +10,10 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.hamburgerContainer}>
-          <Image src={hamburger} alt="menu" />
+        <Image src={hamburger} alt="menu" />
         </div>
         <div className={styles.logoContainer}>
-          <Image src={logo} alt="menu" />
+        <Link href="/"><Image src={logo} alt="audiophile" /></Link>
         </div>
         <ul className={styles.menu}>
           <Link href="/">

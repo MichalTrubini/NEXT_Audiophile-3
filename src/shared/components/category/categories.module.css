@@ -57,6 +57,14 @@
     }
 }
 
+@media screen and (min-width:1024px) {
+
+    .cta:hover {
+        cursor: pointer;
+        color: var(--orange);
+    }
+}
+
 @media screen and (min-width:1440px) {
     .categories {
         gap: 3rem;

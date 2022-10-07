@@ -139,6 +139,18 @@
   .socialBlock {
     grid-area: d;
   }
+
+  .listItem:hover, .social:hover {
+    cursor: pointer;
+  }
+
+  .listItem:hover {
+    color: var(--orange);
+  }
+
+  .social:hover {
+    filter: brightness(0) saturate(100%) invert(58%) sepia(95%) saturate(918%) hue-rotate(330deg) brightness(93%) contrast(81%);
+  }
 }
 
 @media screen and (min-width:1440px) {

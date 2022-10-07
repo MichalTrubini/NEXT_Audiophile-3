@@ -37,9 +37,9 @@ const Footer = () => {
 
         <p className={styles.copyright}>Copyright 2021. All Rights Reserved</p>
         <div className={styles.socialBlock}>
-          <Image src={facebook} alt="facebook" />
-          <Image src={twitter} alt="twitter" />
-          <Image src={instagram} alt="instagram" />
+          <Image src={facebook} alt="facebook" className={styles.social}/>
+          <Image src={twitter} alt="twitter" className={styles.social}/>
+          <Image src={instagram} alt="instagram" className={styles.social}/>
         </div>
       </div>
     </footer>

@@ -1,10 +1,42 @@
 .gallery {
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 12rem;
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 12rem;
 }
 
 .imageContainer {
-    border-radius: 8px;
-    overflow: hidden;
+  border-radius: 8px;
+  overflow: hidden;
 }
+
+@media screen and (min-width: 600px) {
+  .gallery {
+    grid-template-areas:
+      "a b"
+      "c b";
+    gap: 1.8rem;
+    grid-template-columns: 40.2% auto;
+  }
+
+  .imageContainerOne {
+    grid-area: a;
+  }
+  .imageContainerTwo {
+    grid-area: c;
+  }
+  .imageContainerThree {
+    grid-area: b;
+  }
+}
+
+@media screen and (min-width: 900px) {
+    .gallery {
+      grid-template-columns: 40.6% auto;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .gallery {
+      grid-template-columns: 41.1% auto;
+    }
+  }
