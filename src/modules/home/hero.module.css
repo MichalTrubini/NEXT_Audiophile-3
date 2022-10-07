@@ -73,8 +73,6 @@
 
 @media screen and (min-width: 1024px) {
     .hero {
-        display: flex;
-        justify-content: flex-start;
         padding: 0 3.9rem;
         background: url('../../../public//assets/home/desktop/image-hero.jpg') no-repeat;
         background-size: clamp(100px, 115vw, 1300px);

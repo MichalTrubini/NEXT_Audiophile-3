@@ -4,29 +4,20 @@ import Promo from "../../src/shared/components/content/promo";
 import { useRouter } from "next/router";
 import data from "../../data.json";
 import ProductsCategory from "../../src/modules/category/productsCategory";
-import { useState, useEffect } from "react";
-import useWindowDimensions from '../../utils/WindowDimensions'
+import useMediaQuery from "../../utils/hooks";
 
 const PageCategory = () => {
   const router = useRouter();
   const page = String(router.query.categoryID);
-
+  
   const categoryData = data.filter((item) => item.category.includes(page));
-
-  const {width} = useWindowDimensions();
-
-  const [screenWidth, setScreenWidth] = useState(0);
-
-  useEffect(() => {
-    setScreenWidth(width);
-  }, [width]);
 
   //breakpoints for responsivity
   //these numbers can be changed based on what looks good
 
-  const breakpointMobile = 451;
-  const breakpointTablet = 450;
-  const breakpointDesktop = 950;
+  const breakpointMobileWidth = 451;
+  const breakpointTabletWidth = 450;
+  const breakpointDesktopWidth = 950;
 
   //size (width, height) of the original image
   //it is required to set width/height explicitly due to Image layout='responsive' props
@@ -39,19 +30,23 @@ const PageCategory = () => {
   const desktopWidthImage = 1080;
   const desktopHeightImage = 1120;
 
+  const breakpointMobile = useMediaQuery(`(width < ${breakpointMobileWidth}px)`)
+  const breakpointTabletBottomLimit = useMediaQuery(`(width > ${breakpointTabletWidth}px`)
+  const breakpointTabletTopLimit = useMediaQuery(`(width < ${breakpointDesktopWidth}px`)
+  const breakpointTablet = breakpointTabletBottomLimit && breakpointTabletTopLimit
+  const breakpointDesktop = useMediaQuery(`(width > ${breakpointDesktopWidth}px)`)
+
   const imageWidth = () => {
-    if (screenWidth < breakpointMobile) return mobileWidthImage;
-    if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
-      return tabletWidthImage;
-    if (screenWidth > breakpointDesktop) return desktopWidthImage;
+    if (breakpointMobile) return mobileWidthImage;
+    if (breakpointTablet) return tabletWidthImage;
+    if (breakpointDesktop) return desktopWidthImage;
   };
 
   const imageHeight = () => {
-    if (screenWidth < breakpointMobile) return mobileHeightImage;
-    if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
-      return tabletHeightImage;
-    if (screenWidth > breakpointDesktop) return desktopHeightImage;
-  };
+    if (breakpointMobile) return mobileHeightImage;
+    if (breakpointTablet) return tabletHeightImage;
+    if (breakpointDesktop) return desktopHeightImage;
+  }
 
   return (
     <div>
@@ -62,10 +57,9 @@ const PageCategory = () => {
             <ProductsCategory
               key={item.id}
               src={
-                screenWidth < breakpointMobile
+                breakpointMobile
                   ? item.categoryImage.mobile
-                  : screenWidth > breakpointTablet &&
-                    screenWidth < breakpointDesktop
+                  : breakpointTablet
                   ? item.categoryImage.tablet
                   : item.categoryImage.desktop
               }

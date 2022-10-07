@@ -19,7 +19,7 @@ const SeeAlso = () => {
   useEffect(() => {
     setScreenWidth(width);
   }, [width]);
-console.log(width)
+
   //breakpoints for responsivity
   //these numbers can be changed based on what looks good
 
@@ -57,7 +57,7 @@ console.log(width)
       <h2 className={styles.header}>you may also like</h2>
       <div className={styles.container}>
         {productData[0].others.map((item) => (
-          <div className={styles.wrapper}>
+          <div className={styles.wrapper} key={item.slug}>
             <div className={styles.imageContainer}>
               <Image
                 src={                screenWidth < breakpointMobile

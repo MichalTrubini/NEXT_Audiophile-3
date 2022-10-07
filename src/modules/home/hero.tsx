@@ -5,6 +5,7 @@ const Hero = () => {
 
   return (
     <div className={styles.hero}>
+      <div className='container'>
       <div className={styles.content}>
         <p className={styles.subtitle}>new product</p>
         <h1 className={styles.header}>XX99 Mark II HeadphoneS</h1>
@@ -14,7 +15,7 @@ const Hero = () => {
         </p>
         <ButtonLink className="buttonLight" text="see product" link='/product/xx99-mark-two-headphones'/>
       </div>
-
+      </div>
     </div>
   );
 };

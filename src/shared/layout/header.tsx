@@ -13,7 +13,7 @@ const Header = () => {
         <Image src={hamburger} alt="menu" />
         </div>
         <div className={styles.logoContainer}>
-        <Link href="/"><Image src={logo} alt="audiophile" /></Link>
+        <Link href="/"><a><Image src={logo} alt="audiophile" /></a></Link>
         </div>
         <ul className={styles.menu}>
           <Link href="/">
