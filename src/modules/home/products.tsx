@@ -11,6 +11,7 @@ import yx1Desktop from "../../../public/assets/home/desktop/image-earphones-yx1.
 import ButtonLink from "../../shared/components/UI/buttonLink";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import useMediaQuery from "../../../utils/hooks";
 
 const Products = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -31,6 +32,16 @@ const Products = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const breakpointMobileWidth = 376;
+  const breakpointTabletWidth = 375;
+  const breakpointDesktopWidth = 1024;
+
+  const breakpointMobile = useMediaQuery(`(width < ${breakpointMobileWidth}px)`)
+  const breakpointTabletBottomLimit = useMediaQuery(`(width > ${breakpointTabletWidth}px`)
+  const breakpointTabletTopLimit = useMediaQuery(`(width < ${breakpointDesktopWidth}px`)
+  const breakpointTablet = breakpointTabletBottomLimit && breakpointTabletTopLimit
+  const breakpointDesktop = useMediaQuery(`(width > ${breakpointDesktopWidth}px)`)
 
   function imageSwitcherOne() {
     if (screenWidth < 376) return zx9Mobile;

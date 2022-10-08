@@ -14,8 +14,6 @@ export interface IProductsCategory {
     title: string;
     about: string;
     new: boolean;
-    width: number;
-    height: number;
     className:string;
     slug: string;
   }

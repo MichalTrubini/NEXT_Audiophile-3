@@ -9,44 +9,27 @@ import useMediaQuery from "../../utils/hooks";
 const PageCategory = () => {
   const router = useRouter();
   const page = String(router.query.categoryID);
-  
+
   const categoryData = data.filter((item) => item.category.includes(page));
 
   //breakpoints for responsivity
   //these numbers can be changed based on what looks good
 
   const breakpointMobileWidth = 451;
-  const breakpointTabletWidth = 450;
-  const breakpointDesktopWidth = 950;
+  const breakpointTabletWidthBottom = 450;
+  const breakpointTabletWidthTop = 951;
 
-  //size (width, height) of the original image
-  //it is required to set width/height explicitly due to Image layout='responsive' props
-  //these numbers are fixed and should not be changed
-
-  const mobileWidthImage = 654;
-  const mobileHeightImage = 704;
-  const tabletWidthImage = 1378;
-  const tabletHeightImage = 704;
-  const desktopWidthImage = 1080;
-  const desktopHeightImage = 1120;
-
-  const breakpointMobile = useMediaQuery(`(width < ${breakpointMobileWidth}px)`)
-  const breakpointTabletBottomLimit = useMediaQuery(`(width > ${breakpointTabletWidth}px`)
-  const breakpointTabletTopLimit = useMediaQuery(`(width < ${breakpointDesktopWidth}px`)
-  const breakpointTablet = breakpointTabletBottomLimit && breakpointTabletTopLimit
-  const breakpointDesktop = useMediaQuery(`(width > ${breakpointDesktopWidth}px)`)
-
-  const imageWidth = () => {
-    if (breakpointMobile) return mobileWidthImage;
-    if (breakpointTablet) return tabletWidthImage;
-    if (breakpointDesktop) return desktopWidthImage;
-  };
-
-  const imageHeight = () => {
-    if (breakpointMobile) return mobileHeightImage;
-    if (breakpointTablet) return tabletHeightImage;
-    if (breakpointDesktop) return desktopHeightImage;
-  }
+  const breakpointMobile = useMediaQuery(
+    `(width < ${breakpointMobileWidth}px)`
+  );
+  const breakpointTabletBottomLimit = useMediaQuery(
+    `(width > ${breakpointTabletWidthBottom}px`
+  );
+  const breakpointTabletTopLimit = useMediaQuery(
+    `(width < ${breakpointTabletWidthTop}px`
+  );
+  const breakpointTablet =
+    breakpointTabletBottomLimit && breakpointTabletTopLimit;
 
   return (
     <div>
@@ -65,12 +48,10 @@ const PageCategory = () => {
               }
               new={item.new}
               alt={item.name}
-              className={index % 2 ? 'productEven' : 'productOdd'}
+              className={index % 2 ? "productEven" : "productOdd"}
               title={item.name}
               slug={item.slug}
               about={item.description}
-              width={imageWidth()!}
-              height={imageHeight()!}
             />
           ))}
         </div>
