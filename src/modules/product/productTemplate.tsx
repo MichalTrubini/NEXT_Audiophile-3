@@ -3,15 +3,18 @@ import Features from "./partials/features";
 import ProductMain from "./partials/productMain";
 import Gallery from "./partials/gallery";
 import SeeAlso from "./partials/seeAlso";
+import {IPage} from '../../../src/shared/types/types'
 
-const ProductTemplate = () => {
+const ProductTemplate:React.FC<IPage> = (props) => {
 
   return (
+    
+    
     <div className={styles.product}>
-      <ProductMain/>
+      <ProductMain page={props.page}/>
       <Features />
-      <Gallery />
-      <SeeAlso />
+      <Gallery page={props.page}/>
+      <SeeAlso page={props.page}/>
     </div>
   );
 };

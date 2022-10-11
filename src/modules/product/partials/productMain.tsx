@@ -1,73 +1,42 @@
 import Image from "next/image";
 import styles from "./productMain.module.css";
 import data from "../../../../data.json";
-import { useRouter } from "next/router";
-import useWindowDimensions from "../../../../utils/WindowDimensions";
-import { useState, useEffect } from "react";
 import AddToCart from "./addToCart";
+import {IPage} from '../../../../src/shared/types/types'
 
-const ProductMain = () => {
-  const router = useRouter();
-  const page = String(router.query.productID);
+const ProductMain:React.FC<IPage> = (props) => {
+
+  const page = props.page
 
   const productData = data.filter((item) => item.slug.includes(page));
 
-  const { width } = useWindowDimensions();
-
-  const [screenWidth, setScreenWidth] = useState(0);
-
-  useEffect(() => {
-    setScreenWidth(width);
-  }, [width]);
-
-  //breakpoints for responsivity
-  //these numbers can be changed based on what looks good
-
-  const breakpointMobile = 600;
-  const breakpointTablet = 599;
-  const breakpointDesktop = 950;
-
-  //size (width, height) of the original image
-  //it is required to set width/height explicitly due to Image layout='responsive' props
-  //these numbers are fixed and should not be changed
-
-  const mobileWidthImage = 654;
-  const mobileHeightImage = 654;
-  const tabletWidthImage = 562;
-  const tabletHeightImage = 960;
-  const desktopWidthImage = 1080;
-  const desktopHeightImage = 1120;
-
-  const imageWidth = () => {
-    if (screenWidth < breakpointMobile) return mobileWidthImage;
-    if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
-      return tabletWidthImage;
-    if (screenWidth >= breakpointDesktop) return desktopWidthImage;
-  };
-
-  const imageHeight = () => {
-    if (screenWidth < breakpointMobile) return mobileHeightImage;
-    if (screenWidth > breakpointTablet && screenWidth < breakpointDesktop)
-      return tabletHeightImage;
-    if (screenWidth >= breakpointDesktop) return desktopHeightImage;
-  };
-
   return (
     <div className={styles.productIntro}>
-      <div className={styles.imageContainer}>
+      <div className={`${styles.imageContainer} ${styles.imageMobile}`}>
         <Image
-          src={
-            screenWidth < breakpointMobile
-              ? productData[0].image.mobile
-              : screenWidth > breakpointTablet &&
-                screenWidth < breakpointDesktop
-              ? productData[0].image.tablet
-              : productData[0].image.desktop
-          }
+          src={productData[0].image.mobile}
           alt={productData[0].name}
           layout="responsive"
-          width={imageWidth()}
-          height={imageHeight()}
+          width="654"
+          height="654"
+        />
+      </div>
+      <div className={`${styles.imageContainer} ${styles.imageTablet}`}>
+        <Image
+          src={productData[0].image.tablet}
+          alt={productData[0].name}
+          layout="responsive"
+          width="562"
+          height="960"
+        />
+      </div>
+      <div className={`${styles.imageContainer} ${styles.imageDesktop}`}>
+        <Image
+          src={productData[0].image.desktop}
+          alt={productData[0].name}
+          layout="responsive"
+          width="1080"
+          height="1120"
         />
       </div>
       <div className={styles.content}>

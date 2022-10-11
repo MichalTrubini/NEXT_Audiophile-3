@@ -21,7 +21,7 @@ const Features = () => {
         <h2 className={styles.header}>in the box</h2>
         <ul>
           {productData[0].includes.map((item) => (
-            <li className={styles.listItem}>
+            <li className={styles.listItem} key={item.item}>
               <span className={styles.quantity}>{`${item.quantity}x`}</span>
               <span className={styles.boxContent}>{item.item}</span>
             </li>

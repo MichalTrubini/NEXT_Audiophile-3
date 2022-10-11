@@ -17,3 +17,7 @@ export interface IProductsCategory {
     className:string;
     slug: string;
   }
+
+  export interface IPage {
+    page:string
+  }

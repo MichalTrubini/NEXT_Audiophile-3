@@ -9,6 +9,47 @@
   overflow: hidden;
 }
 
+
+.imageMobile {
+  display: block!important;
+}
+
+.imageTablet {
+  display: none!important;
+}
+
+.imageDesktop {
+  display: none!important;
+}
+
+@media screen and (min-width:600px) {
+  .imageMobile {
+    display: none!important;
+  }
+  
+  .imageTablet {
+    display: block!important
+  }
+  
+  .imageDesktop {
+    display: none!important;
+  }
+}
+
+@media screen and (min-width:950px) {
+  .imageMobile {
+    display: none!important;
+  }
+  
+  .imageTablet {
+    display: none!important;
+  }
+  
+  .imageDesktop {
+    display: block!important;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .gallery {
     grid-template-areas:

@@ -1,14 +1,12 @@
 import PageTitle from "../../src/modules/category/pageTitle";
 import Categories from "../../src/shared/components/category/categories";
 import Promo from "../../src/shared/components/content/promo";
-import { useRouter } from "next/router";
 import data from "../../data.json";
 import ProductsCategory from "../../src/modules/category/productsCategory";
 import useMediaQuery from "../../utils/hooks";
+import { IPage } from "../../src/shared/types/types";
 
-const PageCategory = () => {
-  const router = useRouter();
-  const page = String(router.query.categoryID);
+const PageCategory:React.FC<IPage> = ({page}) => {
 
   const categoryData = data.filter((item) => item.category.includes(page));
 
@@ -62,5 +60,24 @@ const PageCategory = () => {
     </div>
   );
 };
+
+export async function getStaticProps(context:any) {
+  const page:string = String(context.params.categoryID);
+
+  return {
+      props: {
+        page:page
+  }}
+}
+
+export async function getStaticPaths() {
+
+  const paths = data.map((item)=>({params: {categoryID: item.category}}))
+
+  return {
+    paths: paths,
+    fallback: false
+  }
+}
 
 export default PageCategory;
