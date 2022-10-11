@@ -1,11 +1,55 @@
 .form {
     display: flex;
+    align-items: center;
     gap: 1.6rem;
+    
+}
 
+.inputContainer {
+    width: 37%;
+    position: relative;
 }
 
 .input {
-    width: 37%;
+    width: 100%;
+    padding: 1.5rem 0;
     border: none;
     background-color: var(--grey);
+    text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.qtyHandler {
+    position: absolute;
+    z-index: 999;
+    top: 25%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.25);
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.qtyHandler:hover {
+    cursor: pointer;
+}
+
+.qtyHandlerMinus {
+    left: 0;
+}
+
+.qtyHandlerPlus {
+    right: 0;
 }
