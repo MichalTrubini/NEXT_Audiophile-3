@@ -12,7 +12,7 @@ const ProductTemplate:React.FC<IPage> = (props) => {
     
     <div className={styles.product}>
       <ProductMain page={props.page}/>
-      <Features />
+      <Features page={props.page}/>
       <Gallery page={props.page}/>
       <SeeAlso page={props.page}/>
     </div>

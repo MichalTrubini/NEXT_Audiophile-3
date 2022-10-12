@@ -21,3 +21,11 @@ export interface IProductsCategory {
   export interface IPage {
     page:string
   }
+
+  export interface IAddToCart {
+    id:number;
+    title: string;
+    abbrev:string;
+    price: number;
+    image:string
+  }

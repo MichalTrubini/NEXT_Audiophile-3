@@ -2,11 +2,10 @@ import Image from "next/image";
 import styles from "./productMain.module.css";
 import data from "../../../../data.json";
 import AddToCart from "./addToCart";
-import {IPage} from '../../../../src/shared/types/types'
+import { IPage } from "../../../../src/shared/types/types";
 
-const ProductMain:React.FC<IPage> = (props) => {
-
-  const page = props.page
+const ProductMain: React.FC<IPage> = (props) => {
+  const page = props.page;
 
   const productData = data.filter((item) => item.slug.includes(page));
 
@@ -41,12 +40,21 @@ const ProductMain:React.FC<IPage> = (props) => {
       </div>
       <div className={styles.content}>
         {productData[0].new && <p className={styles.subtitle}>new product</p>}
-        <h1 className={styles.title}>{productData[0].name}</h1>
+        <h1 id="titleOfItem" className={styles.title}>
+          {productData[0].name}
+        </h1>
         <p className={styles.about}>{productData[0].description}</p>
-        <p className={styles.price}>{`$ ${productData[0].price.toLocaleString(
-          "en-US"
-        )}`}</p>
-        <AddToCart />
+        <p
+          id="pricePerItem"
+          className={styles.price}
+        >{`$ ${productData[0].price.toLocaleString("en-US")}`}</p>
+        <AddToCart
+          id={productData[0].id}
+          title={productData[0].name}
+          abbrev={productData[0].abbrev}
+          image={productData[0].cartImage}
+          price={productData[0].price}
+        />
       </div>
     </div>
   );

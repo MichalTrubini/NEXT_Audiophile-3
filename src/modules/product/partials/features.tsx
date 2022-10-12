@@ -1,15 +1,11 @@
 import styles from "./features.module.css";
 import data from "../../../../data.json";
-import { useRouter } from "next/router";
+import { IPage } from "../../../shared/types/types";
 
+const Features:React.FC<IPage> = (props) => {
 
-const Features = () => {
-  const router = useRouter();
-  const page = String(router.query.productID);
-
+  const page = props.page;
   const productData = data.filter((item) => item.slug.includes(page));
-
-
 
   return (
     <div className={styles.features}>
