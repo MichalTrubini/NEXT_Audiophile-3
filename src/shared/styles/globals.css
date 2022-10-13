@@ -98,6 +98,11 @@ p {
   flex-direction:row-reverse;
 }
 
+.checkoutBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
 
 @media screen and (min-width: 768px) {
   .container {

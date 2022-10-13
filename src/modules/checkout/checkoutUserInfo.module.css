@@ -1,0 +1,173 @@
+.addressBlock {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 2.4rem 2.4rem 3.2rem;
+  margin-top: 6.5rem;
+}
+
+.header {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.8rem;
+  line-height: 3.8rem;
+  margin-bottom: 3.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: 0.93px;
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.label,
+.input {
+  display: block;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.21px;
+  margin-bottom: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 1.8rem 2.4rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.25px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.input:last-child {
+  margin-bottom: 0;
+}
+
+.input:focus {
+  outline: 1px solid var(--orange);
+  border: 0.001px solid var(--orange);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+.labelTwo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.9rem;
+  letter-spacing: -0.25px;
+  margin-left: 1.6rem;
+}
+
+.marginFix {
+  margin-bottom: 1.6rem;
+}
+
+.inputTwo[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cfcfcf;
+  border-radius: 50%;
+
+  display: inline-grid;
+  place-content: center;
+}
+
+.inputTwo[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--orange);
+}
+
+.inputTwo[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.paymentBlockTwo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  margin-top: 3.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .gridOne {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+  }
+
+  .gridTwo {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d e";
+  }
+
+  #addressBlock {
+    grid-area: a;
+  }
+
+  #zipBlock {
+    grid-area: b;
+  }
+
+  #cityBlock {
+    grid-area: c;
+  }
+
+  #countryBlock {
+    grid-area: d;
+  }
+
+  .paymentBlockTop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "a b"
+      "c d";
+  }
+
+  .paymentBlockTwo {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    margin-top: 2.4rem;
+  }
+
+  #paymentHeader {
+    grid-area: a;
+  }
+
+  #paymentMoney {
+    grid-area: b;
+  }
+
+  #paymentCOD {
+    grid-area: d;
+  }
+}

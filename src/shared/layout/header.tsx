@@ -58,7 +58,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Portal selector={"#Portal"}>{showCart && <Cart />}</Portal>
+      <Portal selector={"#Portal"}>{showCart && <Cart closeModal={()=>{setShowCart(false)}}/>}</Portal>
     </>
   );
 };

@@ -7,6 +7,8 @@
     transform: translateX(-50%);
     padding: 3.2rem 2.8rem;
     border-radius: 8px;
+    width: 87.2%;
+    max-width: 377px;
 }
 
 .overlay {
@@ -21,4 +23,146 @@
 .topRow {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3.1rem;
+}
+.cartProducts {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    margin-bottom: 3.2rem;
+}
+
+.cartQty {
+    color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.29px;
+}
+
+.cartRemove {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    text-decoration: underline;
+}
+
+.productItem {
+    display: grid;
+    grid-template-columns: 23.7% 28.1% auto;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.imageContainer {
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.shortname, .price {
+    font-weight: 700;
+    line-height: 2.5rem;
+}
+
+.price {
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.inputContainer {
+    width: 100%;
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 0.9rem 0;
+    border: none;
+    background-color: var(--grey);
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.qtyHandler {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.25);
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qtyHandler:hover {
+    cursor: pointer;
+}
+
+.qtyHandlerMinus {
+    left: 0;
+}
+
+.qtyHandlerPlus {
+    right: 0;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+}
+
+.text {
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 2.5rem;
+}
+
+.total {
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.checkoutButton {
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (min-width:768px) {
+    .cart {
+        transform: unset;
+        left: unset;
+        right: 40px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .cart {
+        right: 165px;
+    }
+}
+
+@media screen and (min-width:1764px) {
+    .cart {
+        right: calc(165px + (100vw - 1764px)/2);
+    }
 }
