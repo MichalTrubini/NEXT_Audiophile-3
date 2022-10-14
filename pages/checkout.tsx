@@ -1,11 +1,9 @@
-import CheckoutSummary from '../src/modules/checkout/checkoutSummary';
-import CheckoutUserInfo from '../src/modules/checkout/checkoutUserInfo';
+import CheckoutDetails from '../src/modules/checkout/checkoutDetails';
 
 const Checkout = () => {
     return (
-        <div className="container checkoutBlocks">
-            <CheckoutUserInfo />
-            <CheckoutSummary />
+        <div className="container">
+            <CheckoutDetails />
         </div>
     )
 }

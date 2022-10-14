@@ -30,7 +30,7 @@ const Cart:React.FC<ICart> = (props) => {
 
   return (
     <>
-      <div className={styles.overlay}></div>
+      <div className='overlay'></div>
       <div className={styles.cart}>
         <div className={styles.topRow}>
           <p className={styles.cartQty}>

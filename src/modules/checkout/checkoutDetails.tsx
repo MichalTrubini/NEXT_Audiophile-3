@@ -1,11 +1,27 @@
-import styles from "./checkoutUserInfo.module.css";
+import styles from "./checkoutDetails.module.css";
+import Image from "next/image";
+import example from "../../../public/assets/cart/image-xx59-headphones.jpg";
+import { useState } from "react";
+import Portal from "../../shared/portal/portal";
+import OrderSummary from "./orderSummary";
+const CheckoutDetails = () => {
 
-const CheckoutUserInfo = () => {
+    const [showModal, setShowModal] = useState(false)
+
+const modalHandler = (event:any) => {
+    event.preventDefault();
+
+    setShowModal(prevValue => true)
+}
+
   return (
-    <div className={styles.addressBlock}>
-      <h1 className={styles.header}>Checkout</h1>
-      <form className={styles.form}>
-        <div>
+    <>
+
+    <form className={styles.form}>
+      <div className={styles.block}>
+        <h1 className={styles.header}>Checkout</h1>
+
+        <div className={styles.billing}>
           <h2 className={styles.title}>billing details</h2>
           <div className={`${styles.grid} ${styles.gridOne}`}>
             <div>
@@ -29,8 +45,8 @@ const CheckoutUserInfo = () => {
           </div>
         </div>
 
-        <div>
-          <h2 className={styles.title}>shiping info</h2>
+        <div className={styles.shipping}>
+          <h2 className={styles.title}>shipping info</h2>
           <div className={`${styles.grid} ${styles.gridTwo}`}>
             <div id={styles.addressBlock}>
               <label className={styles.label} htmlFor="address">
@@ -59,13 +75,19 @@ const CheckoutUserInfo = () => {
           </div>
         </div>
 
-        <div>
+        <div className={styles.payment}>
           <h2 className={styles.title}>payment details</h2>
           <div className={styles.paymentBlockTop}>
-            <div id={styles.paymentHeader} className={`${styles.label} ${styles.marginFix}`}>
+            <div
+              id={styles.paymentHeader}
+              className={`${styles.label} ${styles.marginFix}`}
+            >
               Payment method
             </div>
-            <div id={styles.paymentMoney} className={`${styles.input} ${styles.marginFix}`}>
+            <div
+              id={styles.paymentMoney}
+              className={`${styles.input} ${styles.marginFix}`}
+            >
               <input
                 className={styles.inputTwo}
                 type="radio"
@@ -101,9 +123,47 @@ const CheckoutUserInfo = () => {
             </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div className={`${styles.block} ${styles.summary}`}>
+        <h2 className={styles.summaryHeader}>summary</h2>
+        <div className={styles.products}>
+          <div className={styles.product}>
+            <div className={styles.imageContainer}>
+              <Image src={example} alt="example" />
+            </div>
+            <div className={styles.productinfo}>
+              <div>
+                <p className={styles.productName}>XX99 MK II</p>
+                <p className={styles.priceTag}>$ 2,999</p>
+              </div>
+              <div className={styles.qty}>
+                <p className={styles.qtyTag}>x1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.subtotal}>
+          <p className={styles.subtotalLeft}>total</p>
+          <p className={styles.subtotalRight}>$ 5,396</p>
+        </div>
+        <div className={styles.subtotal}>
+          <p className={styles.subtotalLeft}>shipping</p>
+          <p className={styles.subtotalRight}>$ 50</p>
+        </div>
+        <div className={styles.subtotal}>
+          <p className={styles.subtotalLeft}>vat (included)</p>
+          <p className={styles.subtotalRight}>$ 1,079</p>
+        </div>
+        <div className={styles.total}>
+          <p className={styles.subtotalLeft}>grand total</p>
+          <p className={styles.totalRight}>$ 5,446</p>
+        </div>
+        <button className={`button buttonLight ${styles.button}`} onClick={modalHandler}>continue & pay</button>
+      </div>
+    </form>
+    <Portal selector={"#Portal"}>{showModal && <OrderSummary closeModal={()=>{setShowModal(false)}}/>}</Portal>
+    </>
   );
 };
 
-export default CheckoutUserInfo;
+export default CheckoutDetails;
