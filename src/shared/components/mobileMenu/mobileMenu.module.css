@@ -1,0 +1,49 @@
+.wrapper {
+    background-color: var(--white);
+    position: fixed;
+    top: 0;
+    z-index: 19;
+    width: 100%;
+    padding: 2.4rem;    
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.categories {
+    margin: 11rem 0 0;
+    gap: 3.8rem;
+
+}
+
+.image {
+    width: 100px;
+    top: -27px
+}
+
+.category {
+    padding: 5.8rem 0 2.2rem;
+}
+
+.header {
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width:768px) {
+    .wrapper {
+        padding: 19.6rem 4rem 6.7rem
+    }
+
+    .categories {
+        margin: 0;
+        gap: 1rem;
+    }
+
+    .image {
+        width: 120px;
+        top: -47px
+    }
+
+    .header {
+        margin-bottom: 1.7rem;
+    }
+}

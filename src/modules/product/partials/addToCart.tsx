@@ -35,9 +35,15 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
-    const cart = { id: idItem, product: titleOfItem, shortName: shortName, price: pricePerItem, qty: inputQty, image:imageCart };
-    createCart(cart)
+    const currentCart = { id: idItem, product: titleOfItem, shortName: shortName, price: pricePerItem, qty: inputQty, image:imageCart };
+    createCart(currentCart)
 
+    const cartInStorage = JSON.parse(localStorage.getItem("cart")!);
+    const updatedCart = [cartInStorage,currentCart]
+
+    if (cartInStorage !== null && cartInStorage.length !== undefined) {localStorage.setItem("cart", JSON.stringify(cartInStorage.push(currentCart)))}
+    if (cartInStorage !== null && cartInStorage.length === undefined) {localStorage.setItem("cart", JSON.stringify(updatedCart))}
+    else {localStorage.setItem("cart", JSON.stringify(currentCart))}
   };
 
   return (

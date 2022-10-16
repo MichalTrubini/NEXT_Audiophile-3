@@ -8,12 +8,18 @@ import { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
 import Portal from "../../shared/portal/portal";
 import Cart from "../../modules/cart/cart";
+import MobileMenu from "../components/mobileMenu/mobileMenu";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const showCartHandler = () => {
     setShowCart((prevValue) => !prevValue);
+  };
+
+  const showMenuHandler = () => {
+    setShowMenu((prevValue) => !prevValue);
   };
 
   const { cartCtx } = useContext(CartContext);
@@ -26,7 +32,7 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.container}>
-          <div className={styles.hamburgerContainer}>
+          <div className={styles.hamburgerContainer} onClick={showMenuHandler}>
             <Image src={hamburger} alt="menu" />
           </div>
           <div className={styles.logoContainer}>
@@ -58,7 +64,8 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Portal selector={"#Portal"}>{showCart && <Cart closeModal={()=>{setShowCart(false)}}/>}</Portal>
+      {showCart &&<Portal selector={"#Portal"}><Cart closeModal={()=>{setShowCart(false)}}/></Portal>}
+      {showMenu && <Portal selector={"#Portal"}><MobileMenu closeModal={()=>setShowMenu(false)}/></Portal>}
     </>
   );
 };
