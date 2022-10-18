@@ -4,7 +4,7 @@ import logo from "../../../public/assets/shared/desktop/logo.svg";
 import cart from "../../../public/assets/shared/desktop/icon-cart.svg";
 import Link from "next/link";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import CartContext from "../../store/cart-context";
 import Portal from "../../shared/portal/portal";
 import Cart from "../../modules/cart/cart";
@@ -13,6 +13,7 @@ import MobileMenu from "../components/mobileMenu/mobileMenu";
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [qtyInCart, setQtyInCart] = useState(0)
 
   const showCartHandler = () => {
     setShowCart((prevValue) => !prevValue);
@@ -24,9 +25,14 @@ const Header = () => {
 
   const { cartCtx } = useContext(CartContext);
 
-  const orderedQty = cartCtx
+/*   const orderedQtyContext = cartCtx
     .map((item: any) => item.qty)
-    .reduce((partialSum: number, a: number) => partialSum + a, 0);
+    .reduce((partialSum: number, a: number) => partialSum + a, 0); */
+
+useEffect(() => {
+  const orderedQty = cartCtx.length;
+  setQtyInCart(orderedQty)
+},[cartCtx])
 
   return (
     <>
@@ -58,8 +64,8 @@ const Header = () => {
           </ul>
           <div className={styles.cartContainer} onClick={showCartHandler}>
             <Image src={cart} alt="menu" />
-            {orderedQty > 0 && (
-              <div className={styles.bubble}>{orderedQty}</div>
+            {qtyInCart > 0 && (
+              <div className={styles.bubble}>{qtyInCart}</div>
             )}
           </div>
         </div>

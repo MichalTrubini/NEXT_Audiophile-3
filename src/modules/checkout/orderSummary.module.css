@@ -73,6 +73,9 @@
 .products {
   background-color: var(--grey);
   padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .product {
@@ -80,8 +83,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.6rem;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .productinfo {
@@ -117,6 +118,7 @@
   letter-spacing: -0.21px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 @media screen and (min-width: 768px) {

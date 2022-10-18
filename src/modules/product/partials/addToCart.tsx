@@ -7,7 +7,7 @@ import CartContext from "../../../store/cart-context";
 const AddToCart: React.FC<IAddToCart> = (props) => {
   const [inputQty, setInputQty] = useState(1);
   const router = useRouter();
-  const { createCart } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
 
   const qtyHandler = (e: any) => {
     if (e.target.id === "minusQty" && inputQty > 1)
@@ -21,12 +21,6 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
     setInputQty(event.target.value);
   };
 
-  let idItem = props.id;
-  let titleOfItem = props.title;
-  let shortName = props.abbrev;
-  let pricePerItem = props.price;
-  let imageCart = props.image;
-
   //reseting the input default value when user clicks on new product, i.e. the URL path changes
   useEffect(() => {
     setInputQty(1);
@@ -35,15 +29,15 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
-    const currentCart = { id: idItem, product: titleOfItem, shortName: shortName, price: pricePerItem, qty: inputQty, image:imageCart };
-    createCart(currentCart)
-
+    const currentCart = { id: props.id, product: props.title, shortName: props.abbrev, price: props.price, qty: inputQty, image:props.image };
+    updateCart();
+    
     const cartInStorage = JSON.parse(localStorage.getItem("cart")!);
-    const updatedCart = [cartInStorage,currentCart]
 
-    if (cartInStorage !== null && cartInStorage.length !== undefined) {localStorage.setItem("cart", JSON.stringify(cartInStorage.push(currentCart)))}
-    if (cartInStorage !== null && cartInStorage.length === undefined) {localStorage.setItem("cart", JSON.stringify(updatedCart))}
-    else {localStorage.setItem("cart", JSON.stringify(currentCart))}
+    if (cartInStorage !== null) {
+      localStorage.setItem("cart", JSON.stringify(cartInStorage.concat(currentCart)))    
+    }
+    else {localStorage.setItem("cart", JSON.stringify([currentCart]))}
   };
 
   return (
