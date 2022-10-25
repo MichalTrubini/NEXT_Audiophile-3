@@ -10,10 +10,8 @@ interface ICart {
 
 const Cart: React.FC<ICart> = (props) => {
   const [inputQty, setInputQty] = useState(1);
-  const { updateCart } = useContext(CartContext);
+  const { setCartCtx } = useContext(CartContext);
   const { cartCtx } = useContext(CartContext);
-
-  console.log('cart', cartCtx)
 
   const qtyHandler = (e: any) => {
     if (e.target.id === "minusQty" && inputQty > 1)
@@ -33,7 +31,7 @@ const Cart: React.FC<ICart> = (props) => {
 
   const removeFromCartHandler = () => {
     localStorage.removeItem("cart");
-    updateCart([])
+    setCartCtx([])
   };
 
   const total =
@@ -45,7 +43,7 @@ const Cart: React.FC<ICart> = (props) => {
 
   return (
     <>
-      <div className="overlay"></div>
+      <div className="overlay" onClick={closeModalHandler}></div>
       <div className={styles.cart}>
         {cartCtx.length === 0 && <p className={styles.emptyCart}>Your cart is empty.</p>}
         {cartCtx.length > 0 && (

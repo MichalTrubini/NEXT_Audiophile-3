@@ -1,16 +1,17 @@
 :root {
   --black: #000000;
   --white: #ffffff;
-  --orange: #D87D4A;
-  --lightOrange: #FBAF85;
+  --orange: #d87d4a;
+  --lightOrange: #fbaf85;
   --blackish: #101010;
-  --grey: #F1F1F1;
-  --greyish: #FAFAFA;
+  --grey: #f1f1f1;
+  --greyish: #fafafa;
+  --red: #CD2C2C;
 }
 
 html,
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 62.5%;
   scroll-behavior: smooth;
   background-color: var(--greyish);
@@ -37,6 +38,17 @@ p {
   font-weight: 500;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 .page {
   min-height: 100vh;
   display: flex;
@@ -45,7 +57,7 @@ p {
 }
 
 .container {
-  padding: 0 2.4rem ;
+  padding: 0 2.4rem;
   max-width: 144rem;
   margin-top: 9rem;
 }
@@ -95,7 +107,7 @@ p {
 }
 
 .productEven {
-  flex-direction:row-reverse;
+  flex-direction: row-reverse;
 }
 
 .overlay {
@@ -109,7 +121,7 @@ p {
 
 @media screen and (min-width: 768px) {
   .container {
-    padding: 0 3.9rem ;
+    padding: 0 3.9rem;
   }
 
   .categoryProducts {
@@ -117,7 +129,7 @@ p {
   }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
   .buttonLight:hover {
     background-color: var(--lightOrange);
   }
@@ -128,21 +140,20 @@ p {
   }
 
   .buttonDark:hover {
-    background-color: #4C4C4C;
+    background-color: #4c4c4c;
   }
-  
 }
 
 @media screen and (min-width: 1100px) {
   .container {
-    padding: 0 8rem ;
+    padding: 0 8rem;
     margin: auto;
   }
 }
 
 @media screen and (min-width: 1260px) {
   .container {
-    padding: 0 16.5rem ;
+    padding: 0 16.5rem;
     margin: auto;
   }
 

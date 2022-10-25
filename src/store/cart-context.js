@@ -5,7 +5,7 @@ const CartContext = createContext();
 export function CartProvider({children}) {
     const [cartCtx, setCartCtx ] = useState([]);
     const [cartUpdated, setCartUpdated] = useState(false)
-
+ 
     const updateCart = () => {
         setCartUpdated(prevValue => !prevValue)
     };

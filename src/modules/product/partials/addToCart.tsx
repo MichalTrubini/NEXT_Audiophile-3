@@ -7,7 +7,7 @@ import CartContext from "../../../store/cart-context";
 const AddToCart: React.FC<IAddToCart> = (props) => {
   const [inputQty, setInputQty] = useState(1);
   const router = useRouter();
-  const { updateCart } = useContext(CartContext);
+  const { updateCart, cartCtx } = useContext(CartContext);
 
   const qtyHandler = (e: any) => {
     if (e.target.id === "minusQty" && inputQty > 1)
@@ -29,15 +29,34 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
-    const currentCart = { id: props.id, product: props.title, shortName: props.abbrev, price: props.price, qty: inputQty, image:props.image };
-    updateCart();
-    
-    const cartInStorage = JSON.parse(localStorage.getItem("cart")!);
+    const currentCart = {
+      id: props.id,
+      product: props.title,
+      shortName: props.abbrev,
+      price: props.price,
+      qty: inputQty,
+      image: props.image,
+    };
 
-    if (cartInStorage !== null) {
-      localStorage.setItem("cart", JSON.stringify(cartInStorage.concat(currentCart)))    
+    updateCart();
+
+    const alreadyInCart = cartCtx.find((x: any) => x.id === currentCart.id)
+
+    if (cartCtx.length > 0) { //in this case, there are already products in the cart
+      if (alreadyInCart === undefined) { //if product with a given ID is not already in the cart => adding new product into the cart
+        localStorage.setItem(
+          "cart",
+          JSON.stringify(cartCtx.concat(currentCart))
+        );
+      } else { //if product with a given ID is already in the cart => sending previous cart content into the local storage with updated qty
+        localStorage.removeItem("cart");
+
+        const updatedCart = cartCtx.map((item:any) => item.id == alreadyInCart.id ? {...item, qty: item.qty + currentCart.qty} : item)
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      }
+    } else { //if nothing is in the cart, then add current cart
+      localStorage.setItem("cart", JSON.stringify([currentCart]));
     }
-    else {localStorage.setItem("cart", JSON.stringify([currentCart]))}
   };
 
   return (

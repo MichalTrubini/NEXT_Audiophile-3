@@ -41,6 +41,10 @@
   margin-bottom: 0.9rem;
 }
 
+.labelError {
+  color: var(--red);
+}
+
 .input {
   width: 100%;
   border: 1px solid #cfcfcf;
@@ -52,6 +56,10 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
+.inputError {
+  border: 2px solid var(--red);
+}
+
 .input:last-child {
   margin-bottom: 0;
 }
@@ -59,6 +67,11 @@
 .input:focus {
   outline: 1px solid var(--orange);
   border: 0.001px solid var(--orange);
+}
+
+.inputError:focus {
+  outline: 1px solid var(--red);
+  border: 0.001px solid var(--red);
 }
 
 .grid {
