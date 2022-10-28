@@ -28,6 +28,7 @@ const initialState = {
   eMoneyNumberBlank: false,
   eMoneyPin: "",
   eMoneyPinBlank: false,
+  paymentNotSelected: false,
 };
 
 const reducer = (state: any, action: any) => {
@@ -74,6 +75,8 @@ const reducer = (state: any, action: any) => {
       return { ...state, eMoneyPin: action.value };
     case "eMoneyPinBlank":
       return { ...state, eMoneyPinBlank: action.value };
+    case "paymentNotSelected":
+      return { ...state, paymentNotSelected: action.value };
     default:
       return state;
   }
@@ -83,15 +86,6 @@ const CheckoutDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const { cartCtx } = useContext(CartContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [formError, setFormError] = useState(false);
-
-  console.log(state, formError);
-
-  const modalHandler = (event: any) => {
-    event.preventDefault();
-    if (formError === true) return;
-    setShowModal((prevValue) => true);
-  };
 
   const total =
     cartCtx.length > 0
@@ -103,12 +97,6 @@ const CheckoutDetails = () => {
 
   const regex = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
 
-  /* if (enteredEmail.trim().length === 0) {
-  setEmptyEmail(true);
-} else if (!regex.test(enteredEmail)) {
-  return setWrongFormatEmail(true);
-} */
-
   const formValidation = () => {
     if (state.name.trim() === "") dispatch({ type: "nameBlank", value: true });
     if (state.email.trim() === "") dispatch({ type: "emailBlank", value: true });
@@ -118,12 +106,17 @@ const CheckoutDetails = () => {
     if (state.zip.trim() === "") dispatch({ type: "zipBlank", value: true });
     if (state.city.trim() === "") dispatch({ type: "cityBlank", value: true });
     if (state.country.trim() === "") dispatch({ type: "countryBlank", value: true });
+    if (state.COD === false && state.eMoney === false) dispatch({ type: "paymentNotSelected", value: true });
+    if (state.eMoneyNumber.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyNumberBlank", value: true });
+    if (state.eMoneyPin.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyPinBlank", value: true });
+
+    setShowModal((prevValue) => true);
   };
 
   const formSubmitHandler = (event: any) => {
     event.preventDefault();
     formValidation();
-    //setShowModal((prevValue) => true);
+    console.log(state)
   };
 
   return (
@@ -271,10 +264,24 @@ const CheckoutDetails = () => {
           <div className={styles.payment}>
             <h2 className={styles.title}>payment details</h2>
             <div className={styles.paymentBlockTop}>
-              <div id={styles.paymentHeader} className={`${styles.label} ${styles.marginFix}`}>
+              <div
+                id={styles.paymentHeader}
+                className={
+                  state.paymentNotSelected
+                    ? `${styles.label} ${styles.marginFix} ${styles.labelError}`
+                    : `${styles.label} ${styles.marginFix}`
+                }
+              >
                 Payment method
               </div>
-              <div id={styles.paymentMoney} className={`${styles.input} ${styles.marginFix}`}>
+              <div
+                id={styles.paymentMoney}
+                className={
+                  state.paymentNotSelected
+                    ? `${styles.input} ${styles.marginFix} ${styles.inputError}`
+                    : `${styles.input} ${styles.marginFix}`
+                }
+              >
                 <input
                   className={styles.inputTwo}
                   type="radio"
@@ -284,13 +291,21 @@ const CheckoutDetails = () => {
                   onClick={() => {
                     dispatch({ type: "eMoney", value: true });
                     dispatch({ type: "COD", value: false });
+                    dispatch({ type: "paymentNotSelected", value: false });
                   }}
                 />
                 <label className={styles.labelTwo} htmlFor="cardPayment">
                   E-Money
                 </label>
               </div>
-              <div id={styles.paymentCOD} className={styles.input}>
+              <div
+                id={styles.paymentCOD}
+                className={
+                  state.paymentNotSelected
+                    ? `${styles.input} ${styles.marginFix} ${styles.inputError}`
+                    : `${styles.input} ${styles.marginFix}`
+                }
+              >
                 <input
                   className={styles.inputTwo}
                   type="radio"
@@ -300,6 +315,7 @@ const CheckoutDetails = () => {
                   onClick={() => {
                     dispatch({ type: "eMoney", value: false });
                     dispatch({ type: "COD", value: true });
+                    dispatch({ type: "paymentNotSelected", value: false });
                   }}
                 />
                 <label className={styles.labelTwo} htmlFor="COD">
@@ -307,31 +323,43 @@ const CheckoutDetails = () => {
                 </label>
               </div>
             </div>
-            {state.eMoney && <div className={styles.paymentBlockTwo}>
-              <div>
-                <label className={styles.label}>e-Money Number</label>
-                <input
-                  className={styles.input}
-                  onChange={(event) => dispatch({ type: "eMoneyNumber", value: event?.target.value })}
-                />
+            {state.eMoney && (
+              <div className={styles.paymentBlockTwo}>
+                <div>
+                  <label className={state.eMoneyNumberBlank ? `${styles.label} ${styles.labelError}` : styles.label}>
+                    e-Money Number
+                  </label>
+                  <input
+                    className={state.eMoneyNumberBlank ? `${styles.input} ${styles.inputError}` : styles.input}
+                    onChange={(event) => {
+                      dispatch({ type: "eMoneyNumber", value: event?.target.value });
+                      dispatch({ type: "eMoneyNumberBlank", value: false });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label className={state.eMoneyPinBlank ? `${styles.label} ${styles.labelError}` : styles.label}>e-Money PIN</label>
+                  <input
+                    className={state.eMoneyPinBlank ? `${styles.input} ${styles.inputError}` : styles.input}
+                    onChange={(event) => {
+                      dispatch({ type: "eMoneyPin", value: event?.target.value });
+                      dispatch({ type: "eMoneyPinBlank", value: false });
+                    }}
+                  />
+                </div>
               </div>
-              <div>
-                <label className={styles.label}>e-Money PIN</label>
-                <input
-                  className={styles.input}
-                  onChange={(event) => dispatch({ type: "eMoneyPin", value: event?.target.value })}
-                />
+            )}
+            {state.COD && (
+              <div className={styles.codBlock}>
+                <div className={styles.imageContainerCOD}>
+                  <Image src={codIcon} alt="COD" />
+                </div>
+                <p className={styles.codText}>
+                  The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your
+                  residence. Just make sure your address is correct so that your order will not be cancelled.
+                </p>
               </div>
-            </div>}
-            {state.COD && <div className={styles.codBlock}>
-              <div className={styles.imageContainerCOD}>
-                <Image src={codIcon} alt="COD" />
-              </div>
-              <p className={styles.codText}>
-                The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your
-                residence. Just make sure your address is correct so that your order will not be cancelled.
-              </p>
-            </div>}
+            )}
           </div>
         </div>
         <div className={`${styles.block} ${styles.summary}`}>
