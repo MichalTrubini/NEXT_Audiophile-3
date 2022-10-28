@@ -4,12 +4,14 @@ import { useState, useContext, useReducer } from "react";
 import CartContext from "../../store/cart-context";
 import Portal from "../../shared/portal/portal";
 import OrderSummary from "./orderSummary";
+import codIcon from "../../../public/assets/checkout/icon-cash-on-delivery.svg";
 
 const initialState = {
   name: "",
   nameBlank: false,
   email: "",
   emailBlank: false,
+  emailFormat: false,
   phone: "",
   phoneBlank: false,
   address: "",
@@ -20,6 +22,8 @@ const initialState = {
   cityBlank: false,
   country: "",
   countryBlank: false,
+  eMoney: false,
+  COD: false,
   eMoneyNumber: "",
   eMoneyNumberBlank: false,
   eMoneyPin: "",
@@ -36,6 +40,8 @@ const reducer = (state: any, action: any) => {
       return { ...state, email: action.value };
     case "emailBlank":
       return { ...state, emailBlank: action.value };
+    case "emailFormat":
+      return { ...state, emailFormat: action.value };
     case "phone":
       return { ...state, phone: action.value };
     case "phoneBlank":
@@ -58,6 +64,10 @@ const reducer = (state: any, action: any) => {
       return { ...state, countryBlank: action.value };
     case "eMoneyNumber":
       return { ...state, eMoneyNumber: action.value };
+    case "eMoney":
+      return { ...state, eMoney: action.value };
+    case "COD":
+      return { ...state, COD: action.value };
     case "eMoneyNumberBlank":
       return { ...state, eMoneyNumberBlank: action.value };
     case "eMoneyPin":
@@ -91,14 +101,23 @@ const CheckoutDetails = () => {
   const shippingCost = 50;
   const VAT = 0.2;
 
+  const regex = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
+
+  /* if (enteredEmail.trim().length === 0) {
+  setEmptyEmail(true);
+} else if (!regex.test(enteredEmail)) {
+  return setWrongFormatEmail(true);
+} */
+
   const formValidation = () => {
-    if (state.name === "") dispatch({ type: "nameBlank", value: true });
-    if (state.email === "") dispatch({ type: "emailBlank", value: true });
-    if (state.phone === "") dispatch({ type: "phoneBlank", value: true });
-    if (state.address === "") dispatch({ type: "addressBlank", value: true });
-    if (state.zip === "") dispatch({ type: "zipBlank", value: true });
-    if (state.city === "") dispatch({ type: "cityBlank", value: true });
-    if (state.country === "") dispatch({ type: "countryBlank", value: true });
+    if (state.name.trim() === "") dispatch({ type: "nameBlank", value: true });
+    if (state.email.trim() === "") dispatch({ type: "emailBlank", value: true });
+    if (!regex.test(state.email)) dispatch({ type: "emailFormat", value: true });
+    if (state.phone.trim() === "") dispatch({ type: "phoneBlank", value: true });
+    if (state.address.trim() === "") dispatch({ type: "addressBlank", value: true });
+    if (state.zip.trim() === "") dispatch({ type: "zipBlank", value: true });
+    if (state.city.trim() === "") dispatch({ type: "cityBlank", value: true });
+    if (state.country.trim() === "") dispatch({ type: "countryBlank", value: true });
   };
 
   const formSubmitHandler = (event: any) => {
@@ -109,14 +128,15 @@ const CheckoutDetails = () => {
 
   return (
     <>
-      <form className={styles.form} onSubmit={formSubmitHandler}>
+      <form className={styles.form} onSubmit={formSubmitHandler} noValidate>
         <div className={styles.block}>
           <h1 className={styles.header}>Checkout</h1>
 
           <div className={styles.billing}>
             <h2 className={styles.title}>billing details</h2>
             <div className={`${styles.grid} ${styles.gridOne}`}>
-              <div>
+              <div className={styles.posRel}>
+                {state.nameBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label
                   className={state.nameBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="name"
@@ -133,24 +153,32 @@ const CheckoutDetails = () => {
                   }}
                 />
               </div>
-              <div>
+              <div className={styles.posRel}>
+                {state.emailBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {!state.emailBlank && state.emailFormat && <p className={styles.errorMessage}>Wrong format</p>}
                 <label
-                  className={state.emailBlank ? `${styles.label} ${styles.labelError}` : styles.label}
+                  className={
+                    state.emailBlank || state.emailFormat ? `${styles.label} ${styles.labelError}` : styles.label
+                  }
                   htmlFor="email"
                 >
                   Email Address
                 </label>
                 <input
-                  className={state.emailBlank ? `${styles.input} ${styles.inputError}` : styles.input}
+                  className={
+                    state.emailBlank || state.emailFormat ? `${styles.input} ${styles.inputError}` : styles.input
+                  }
                   type="email"
                   id="email"
                   onChange={(event) => {
                     dispatch({ type: "email", value: event?.target.value });
                     dispatch({ type: "emailBlank", value: false });
+                    dispatch({ type: "emailFormat", value: false });
                   }}
                 />
               </div>
-              <div>
+              <div className={styles.posRel}>
+                {state.phoneBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label
                   className={state.phoneBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="phone"
@@ -172,7 +200,8 @@ const CheckoutDetails = () => {
           <div className={styles.shipping}>
             <h2 className={styles.title}>shipping info</h2>
             <div className={`${styles.grid} ${styles.gridTwo}`}>
-              <div id={styles.addressBlock}>
+              <div id={styles.addressBlock} className={styles.posRel}>
+                {state.addressBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label
                   className={state.addressBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="address"
@@ -188,12 +217,13 @@ const CheckoutDetails = () => {
                   }}
                 />
               </div>
-              <div id={styles.zipBlock}>
+              <div id={styles.zipBlock} className={styles.posRel}>
+                {state.zipBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label className={state.zipBlank ? `${styles.label} ${styles.labelError}` : styles.label} htmlFor="zip">
                   Zip Code
                 </label>
                 <input
-                 className={state.zipBlank ? `${styles.input} ${styles.inputError}` : styles.input}
+                  className={state.zipBlank ? `${styles.input} ${styles.inputError}` : styles.input}
                   id="zip"
                   onChange={(event) => {
                     dispatch({ type: "zip", value: event?.target.value });
@@ -201,7 +231,8 @@ const CheckoutDetails = () => {
                   }}
                 />
               </div>
-              <div id={styles.cityBlock}>
+              <div id={styles.cityBlock} className={styles.posRel}>
+                {state.cityBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label
                   className={state.cityBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="city"
@@ -217,7 +248,8 @@ const CheckoutDetails = () => {
                   }}
                 />
               </div>
-              <div id={styles.countryBlock}>
+              <div id={styles.countryBlock} className={styles.posRel}>
+                {state.countryBlank && <p className={styles.errorMessage}>Can't be blank</p>}
                 <label
                   className={state.countryBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="country"
@@ -243,29 +275,44 @@ const CheckoutDetails = () => {
                 Payment method
               </div>
               <div id={styles.paymentMoney} className={`${styles.input} ${styles.marginFix}`}>
-                <input className={styles.inputTwo} type="radio" name="payment" value="e-Money" id="cardPayment" />
+                <input
+                  className={styles.inputTwo}
+                  type="radio"
+                  name="payment"
+                  value="e-Money"
+                  id="cardPayment"
+                  onClick={() => {
+                    dispatch({ type: "eMoney", value: true });
+                    dispatch({ type: "COD", value: false });
+                  }}
+                />
                 <label className={styles.labelTwo} htmlFor="cardPayment">
                   E-Money
                 </label>
               </div>
               <div id={styles.paymentCOD} className={styles.input}>
-                <input className={styles.inputTwo} type="radio" name="payment" value="Cash on Delivery" id="COD" />
+                <input
+                  className={styles.inputTwo}
+                  type="radio"
+                  name="payment"
+                  value="Cash on Delivery"
+                  id="COD"
+                  onClick={() => {
+                    dispatch({ type: "eMoney", value: false });
+                    dispatch({ type: "COD", value: true });
+                  }}
+                />
                 <label className={styles.labelTwo} htmlFor="COD">
                   Cash On delivery
                 </label>
               </div>
             </div>
-            <div className={styles.paymentBlockTwo}>
+            {state.eMoney && <div className={styles.paymentBlockTwo}>
               <div>
                 <label className={styles.label}>e-Money Number</label>
                 <input
                   className={styles.input}
-                  onChange={(event) =>
-                    dispatch({
-                      type: "eMoneyNumber",
-                      value: event?.target.value,
-                    })
-                  }
+                  onChange={(event) => dispatch({ type: "eMoneyNumber", value: event?.target.value })}
                 />
               </div>
               <div>
@@ -275,7 +322,16 @@ const CheckoutDetails = () => {
                   onChange={(event) => dispatch({ type: "eMoneyPin", value: event?.target.value })}
                 />
               </div>
-            </div>
+            </div>}
+            {state.COD && <div className={styles.codBlock}>
+              <div className={styles.imageContainerCOD}>
+                <Image src={codIcon} alt="COD" />
+              </div>
+              <p className={styles.codText}>
+                The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your
+                residence. Just make sure your address is correct so that your order will not be cancelled.
+              </p>
+            </div>}
           </div>
         </div>
         <div className={`${styles.block} ${styles.summary}`}>
