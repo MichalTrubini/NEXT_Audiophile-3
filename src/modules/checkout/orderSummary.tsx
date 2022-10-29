@@ -63,7 +63,7 @@ const OrderSummary: React.FC<IModal> = (props) => {
                 </div>
                 {cartCtx.length > 1 && (
                   <p className={styles.other}>
-                    and {cartCtx.length} other item(s)
+                    and {cartCtx.length - 1} other item(s)
                   </p>
                 )}
               </div>

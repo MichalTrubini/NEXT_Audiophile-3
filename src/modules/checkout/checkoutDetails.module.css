@@ -330,7 +330,12 @@
     margin-bottom: 14.1rem;
   }
 
+  .checkoutInfo {
+    width: 730px;
+  }
+
   .summary {
     margin: 0;
+    width: 350px;
   }
 }

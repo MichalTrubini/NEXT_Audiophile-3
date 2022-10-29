@@ -1,5 +1,5 @@
 export interface IFeatures {
-    features: string;
+    features: string; 
 }
 
 export interface IButtonLink {

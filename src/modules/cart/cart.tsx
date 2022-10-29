@@ -3,6 +3,7 @@ import CartContext from "../../store/cart-context";
 import { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { iteratorSymbol } from "immer/dist/internal";
 
 interface ICart {
   closeModal(): any;
@@ -11,13 +12,17 @@ interface ICart {
 const Cart: React.FC<ICart> = (props) => {
   const [inputQty, setInputQty] = useState(1);
   const { setCartCtx } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
   const { cartCtx } = useContext(CartContext);
 
-  const qtyHandler = (e: any) => {
-    if (e.target.id === "minusQty" && inputQty > 1)
-      return setInputQty((prevValue) => prevValue - 1);
-    if (e.target.id === "addQty")
-      return setInputQty((prevValue) => prevValue + 1);
+  const qtyHandler = (e:any, id:number) => {
+
+    //if((cartCtx.map((item:any) => item.id === id) && cartCtx.map((item:any) => item.qty === 1))) return;
+
+    localStorage.removeItem("cart");
+    const updatedCart = e.target.id === "minusQty" ? cartCtx.map((item:any) => item.id === id ? {...item, qty: item.qty -1 } : item) : cartCtx.map((item:any) => item.id === id ? {...item, qty: item.qty + 1 } : item)
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateCart();
   };
 
   const inputHandler = (event: any) => {
@@ -81,7 +86,7 @@ const Cart: React.FC<ICart> = (props) => {
                     <p
                       id="minusQty"
                       className={`${styles.qtyHandler} ${styles.qtyHandlerMinus}`}
-                      onClick={qtyHandler}
+                      onClick={(e) => qtyHandler(e, item.id)}
                     >
                       -
                     </p>
@@ -96,7 +101,7 @@ const Cart: React.FC<ICart> = (props) => {
                     <p
                       id="addQty"
                       className={`${styles.qtyHandler} ${styles.qtyHandlerPlus}`}
-                      onClick={qtyHandler}
+                      onClick={(e) => qtyHandler(e, item.id)}
                     >
                       +
                     </p>

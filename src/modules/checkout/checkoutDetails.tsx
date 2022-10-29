@@ -131,7 +131,7 @@ const CheckoutDetails = () => {
   return (
     <>
       <form className={styles.form} onSubmit={formValidation} noValidate>
-        <div className={styles.block}>
+        <div className={`${styles.block} ${styles.checkoutInfo}`}>
           <h1 className={styles.header}>Checkout</h1>
           <div className={styles.billing}>
             <h2 className={styles.title}>billing details</h2>
