@@ -1,6 +1,6 @@
 import styles from "./checkoutDetails.module.css";
 import Image from "next/image";
-import { useState, useContext, useReducer } from "react";
+import { useState, useContext, useReducer, useEffect } from "react";
 import CartContext from "../../store/cart-context";
 import Portal from "../../shared/portal/portal";
 import OrderSummary from "./orderSummary";
@@ -97,7 +97,10 @@ const CheckoutDetails = () => {
 
   const regex = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
 
-  const formValidation = () => {
+  const formValidation = (event: any) => {
+
+    event.preventDefault();
+
     if (state.name.trim() === "") dispatch({ type: "nameBlank", value: true });
     if (state.email.trim() === "") dispatch({ type: "emailBlank", value: true });
     if (!regex.test(state.email)) dispatch({ type: "emailFormat", value: true });
@@ -110,21 +113,26 @@ const CheckoutDetails = () => {
     if (state.eMoneyNumber.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyNumberBlank", value: true });
     if (state.eMoneyPin.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyPinBlank", value: true });
 
-    setShowModal((prevValue) => true);
-  };
-
-  const formSubmitHandler = (event: any) => {
-    event.preventDefault();
-    formValidation();
-    console.log(state)
+    if( 
+      state.name.trim() !== "" &&
+      state.email.trim() !== "" &&
+      regex.test(state.email) &&
+      state.phone.trim() !== "" &&
+      state.address.trim() !== "" &&
+      state.zip.trim() !== "" &&
+      state.city.trim() !== "" &&
+      state.country.trim() !== "" &&
+      ((state.eMoney === true && state.eMoneyNumber.trim() !== "" && state.eMoneyPin.trim() !== "") || state.COD === true)
+      )
+      {setShowModal((prevValue) => true);}
+    
   };
 
   return (
     <>
-      <form className={styles.form} onSubmit={formSubmitHandler} noValidate>
+      <form className={styles.form} onSubmit={formValidation} noValidate>
         <div className={styles.block}>
           <h1 className={styles.header}>Checkout</h1>
-
           <div className={styles.billing}>
             <h2 className={styles.title}>billing details</h2>
             <div className={`${styles.grid} ${styles.gridOne}`}>
