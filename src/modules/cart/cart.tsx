@@ -17,10 +17,8 @@ const Cart: React.FC<ICart> = (props) => {
 
   const qtyHandler = (e:any, id:number) => {
 
-    //if((cartCtx.map((item:any) => item.id === id) && cartCtx.map((item:any) => item.qty === 1))) return;
-
     localStorage.removeItem("cart");
-    const updatedCart = e.target.id === "minusQty" ? cartCtx.map((item:any) => item.id === id ? {...item, qty: item.qty -1 } : item) : cartCtx.map((item:any) => item.id === id ? {...item, qty: item.qty + 1 } : item)
+    const updatedCart = e.target.id === "minusQty" ? cartCtx.map((item:any) => item.id === id && item.qty > 1 ? {...item, qty: item.qty -1 } : item) : cartCtx.map((item:any) => item.id === id ? {...item, qty: item.qty + 1 } : item)
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     updateCart();
   };
