@@ -34,7 +34,7 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
       product: props.title,
       shortName: props.abbrev,
       price: props.price,
-      qty: inputQty,
+      qty: Number(inputQty),
       image: props.image,
     };
 
