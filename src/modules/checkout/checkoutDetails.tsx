@@ -137,7 +137,7 @@ const CheckoutDetails = () => {
             <h2 className={styles.title}>billing details</h2>
             <div className={`${styles.grid} ${styles.gridOne}`}>
               <div className={styles.posRel}>
-                {state.nameBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.nameBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label
                   className={state.nameBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="name"
@@ -155,7 +155,7 @@ const CheckoutDetails = () => {
                 />
               </div>
               <div className={styles.posRel}>
-                {state.emailBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.emailBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 {!state.emailBlank && state.emailFormat && <p className={styles.errorMessage}>Wrong format</p>}
                 <label
                   className={
@@ -179,7 +179,7 @@ const CheckoutDetails = () => {
                 />
               </div>
               <div className={styles.posRel}>
-                {state.phoneBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.phoneBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label
                   className={state.phoneBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="phone"
@@ -202,7 +202,7 @@ const CheckoutDetails = () => {
             <h2 className={styles.title}>shipping info</h2>
             <div className={`${styles.grid} ${styles.gridTwo}`}>
               <div id={styles.addressBlock} className={styles.posRel}>
-                {state.addressBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.addressBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label
                   className={state.addressBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="address"
@@ -219,7 +219,7 @@ const CheckoutDetails = () => {
                 />
               </div>
               <div id={styles.zipBlock} className={styles.posRel}>
-                {state.zipBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.zipBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label className={state.zipBlank ? `${styles.label} ${styles.labelError}` : styles.label} htmlFor="zip">
                   Zip Code
                 </label>
@@ -233,7 +233,7 @@ const CheckoutDetails = () => {
                 />
               </div>
               <div id={styles.cityBlock} className={styles.posRel}>
-                {state.cityBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.cityBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label
                   className={state.cityBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="city"
@@ -250,7 +250,7 @@ const CheckoutDetails = () => {
                 />
               </div>
               <div id={styles.countryBlock} className={styles.posRel}>
-                {state.countryBlank && <p className={styles.errorMessage}>Can't be blank</p>}
+                {state.countryBlank && <p className={styles.errorMessage}>Can&apos;t be blank</p>}
                 <label
                   className={state.countryBlank ? `${styles.label} ${styles.labelError}` : styles.label}
                   htmlFor="country"
@@ -367,7 +367,7 @@ const CheckoutDetails = () => {
                   <Image src={codIcon} alt="COD" />
                 </div>
                 <p className={styles.codText}>
-                  The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your
+                  The &apos;Cash on Delivery&apos; option enables you to pay in cash when our delivery courier arrives at your
                   residence. Just make sure your address is correct so that your order will not be cancelled.
                 </p>
               </div>
