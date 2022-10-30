@@ -86,7 +86,7 @@ const CheckoutDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const { cartCtx } = useContext(CartContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  console.log(cartCtx.length > 0)
   const total =
     cartCtx.length > 0
       ? cartCtx.map((item: any) => item.price * item.qty).reduce((partialSum: number, a: number) => partialSum + a, 0)
@@ -130,6 +130,8 @@ const CheckoutDetails = () => {
 
   return (
     <>
+    {cartCtx.length === 0 && <p className={styles.emptyCheckout}>Nothing to display. Cart is empty.</p>}
+    {cartCtx.length > 0 && 
       <form className={styles.form} onSubmit={formValidation} noValidate>
         <div className={`${styles.block} ${styles.checkoutInfo}`}>
           <h1 className={styles.header}>Checkout</h1>
@@ -415,6 +417,7 @@ const CheckoutDetails = () => {
           </button>
         </div>
       </form>
+      }
       <Portal selector={"#Portal"}>
         {showModal && (
           <OrderSummary
