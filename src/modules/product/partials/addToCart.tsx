@@ -10,8 +10,8 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
   const { updateCart, cartCtx } = useContext(CartContext);
 
   const qtyHandler = (e: any) => {
-    if (e.target.id === "minusQty" && inputQty > 1) return setInputQty((prevValue) => prevValue - 1);
-    if (e.target.id === "addQty") return setInputQty((prevValue) => prevValue + 1);
+    if (e.target.id === "minusQty" && inputQty > 1) return setInputQty((prevValue) => Number(prevValue) - 1);
+    if (e.target.id === "addQty") return setInputQty((prevValue) => Number(prevValue) + 1);
   };
 
   const inputHandler = (event: any) => {
