@@ -255,11 +255,10 @@
 }
 
 .emptyCheckout {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 15rem;
   text-align: center;
+  font-weight: 700;
+  color: var(--red);
   width: 100%;
 }
 
