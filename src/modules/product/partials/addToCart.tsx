@@ -16,6 +16,7 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
 
   const inputHandler = (event: any) => {
     if (event.target.value.trim() < 0) return;
+    if (!Number.isInteger(Number(event.target.value.trim()))) return;
     setInputQty(event.target.value.trim());
   };
 

@@ -35,7 +35,7 @@ const Footer = () => {
           demo facility - we&apos;re open 7 days a week.
         </p>
 
-        <p className={styles.copyright}>Copyright 2021. All Rights Reserved</p>
+        <p className={styles.copyright}>Copyright {new Date().getFullYear()}. All Rights Reserved</p>
         <div className={styles.socialBlock}>
           <Image src={facebook} alt="facebook" className={styles.social}/>
           <Image src={twitter} alt="twitter" className={styles.social}/>
