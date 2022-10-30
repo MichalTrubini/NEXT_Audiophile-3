@@ -29,3 +29,19 @@ export interface IProductsCategory {
     price: number;
     image:string
   }
+
+  export interface ICategories {
+    classNameImage?:string;
+    classNameCategories?:string;
+    onClick?:any;
+    classNameHeader?:string;
+    classNameCategory?:string
+  }
+
+  export interface IModal {
+    closeModal(): any;
+  }
+
+export interface ITitle {
+    title: string
+}

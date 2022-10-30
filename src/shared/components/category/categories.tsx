@@ -5,16 +5,9 @@ import headphones from "../../../../public/assets/shared/desktop/image-category-
 import speakers from "../../../../public/assets/shared/desktop/image-category-thumbnail-speakers.png";
 import arrow from "../../../../public/assets/shared/desktop/icon-arrow-right.svg";
 import Link from "next/link";
+import {ICategories} from '../../../../src/shared/types/types';
 
-interface ICategories {
-  classNameImage?:string;
-  classNameCategories?:string;
-  onClick?:any;
-  classNameHeader?:string;
-  classNameCategory?:string
-}
-
-const Categories:React.FC<ICategories> = (props) => {
+const Categories: React.FC<ICategories> = (props) => {
   const categoryData = [
     {
       id: 1,

@@ -72,7 +72,7 @@
 
 @media screen and (min-width: 900px) {
     .gallery {
-      grid-template-columns: 40.6% auto;
+      grid-template-columns: 40.9% auto;
     }
   }
 

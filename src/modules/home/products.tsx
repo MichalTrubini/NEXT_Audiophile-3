@@ -11,7 +11,6 @@ import yx1Desktop from "../../../public/assets/home/desktop/image-earphones-yx1.
 import ButtonLink from "../../shared/components/UI/buttonLink";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import useMediaQuery from "../../../utils/hooks";
 
 const Products = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -35,18 +34,12 @@ const Products = () => {
 
   const breakpointMobileWidth = 376;
   const breakpointTabletWidth = 375;
-  const breakpointDesktopWidth = 1024;
-
-  const breakpointMobile = useMediaQuery(`(width < ${breakpointMobileWidth}px)`)
-  const breakpointTabletBottomLimit = useMediaQuery(`(width > ${breakpointTabletWidth}px`)
-  const breakpointTabletTopLimit = useMediaQuery(`(width < ${breakpointDesktopWidth}px`)
-  const breakpointTablet = breakpointTabletBottomLimit && breakpointTabletTopLimit
-  const breakpointDesktop = useMediaQuery(`(width > ${breakpointDesktopWidth}px)`)
+  const breakpointDesktopWidth = 1025;
 
   function imageSwitcherOne() {
-    if (screenWidth < 376) return zx9Mobile;
-    if (screenWidth > 375 && screenWidth < 1025) return zx9Tablet;
-    if (screenWidth > 1024) return zx9Desktop;
+    if (screenWidth < breakpointMobileWidth) return zx9Mobile;
+    if (screenWidth > breakpointTabletWidth && screenWidth < breakpointDesktopWidth) return zx9Tablet;
+    if (screenWidth > breakpointDesktopWidth - 1) return zx9Desktop;
   }
 
   function imageSwitcherTwo() {
@@ -56,9 +49,9 @@ const Products = () => {
   }
 
   function imageSwitcherThree() {
-    if (screenWidth < 376) return yx1Mobile;
-    if (screenWidth > 375 && screenWidth < 1025) return yx1Tablet;
-    if (screenWidth > 1024) return yx1Desktop;
+    if (screenWidth < breakpointMobileWidth) return yx1Mobile;
+    if (screenWidth > breakpointTabletWidth && screenWidth < breakpointDesktopWidth) return yx1Tablet;
+    if (screenWidth > breakpointDesktopWidth - 1) return yx1Desktop;
   }
 
   return (
@@ -70,26 +63,25 @@ const Products = () => {
         <div className={styles.productOneContent}>
           <h2 className={styles.headerLight}>zx9 speaker</h2>
           <p className={styles.about}>
-            Upgrade to premium speakers that are phenomenally built to deliver
-            truly remarkable sound.
+            Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
           </p>
-          <ButtonLink className="buttonDark" text="see product" link='/product/zx9-speaker'></ButtonLink>
+          <ButtonLink className="buttonDark" text="see product" link="/product/zx9-speaker"></ButtonLink>
         </div>
       </div>
       <div className={`${styles.product} ${styles.productTwo}`}>
         <div className={styles.imageContainerTwo}>
-          <Image src={imageSwitcherTwo()!} alt="zx9 speaker" />
+          <Image src={imageSwitcherTwo()!} alt="zx7 speaker" />
         </div>
         <h2 className={styles.headerDark}>zx7 speaker</h2>
-        <ButtonLink className="buttonTransparent" text="see product" link='/product/zx7-speaker'></ButtonLink>
+        <ButtonLink className="buttonTransparent" text="see product" link="/product/zx7-speaker"></ButtonLink>
       </div>
       <div className={`${styles.product} ${styles.productThree}`}>
         <div className={styles.imageContainerThree}>
-          <Image src={imageSwitcherThree()!} alt="zx9 speaker" />
+          <Image src={imageSwitcherThree()!} alt="yx1 earphones" />
         </div>
         <div className={styles.productThreeContent}>
-          <h2 className={styles.headerDark}>YX1 EARPHONES</h2>
-          <ButtonLink className="buttonTransparent" text="see product" link='/product/yx1-earphones'></ButtonLink>
+          <h2 className={styles.headerDark}>yx1 earphones</h2>
+          <ButtonLink className="buttonTransparent" text="see product" link="/product/yx1-earphones"></ButtonLink>
         </div>
       </div>
     </div>

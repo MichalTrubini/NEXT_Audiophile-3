@@ -1,5 +1,3 @@
-import Router from "next/router";
-import { useState, useEffect } from "react";
 import Footer from "./footer";
 import Header from "./header";
 

@@ -1,7 +1,8 @@
 import Categories from "../category/categories";
 import styles from './mobileMenu.module.css'
+import {IModal} from '../../types/types'
 
-const MobileMenu = (props:any) => {
+const MobileMenu: React.FC<IModal> = (props) => {
 
     const closeModalHandler = () => {
         props.closeModal()

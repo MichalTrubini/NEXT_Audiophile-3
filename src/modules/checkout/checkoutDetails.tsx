@@ -1,6 +1,6 @@
 import styles from "./checkoutDetails.module.css";
 import Image from "next/image";
-import { useState, useContext, useReducer, useEffect } from "react";
+import { useState, useContext, useReducer } from "react";
 import CartContext from "../../store/cart-context";
 import Portal from "../../shared/portal/portal";
 import OrderSummary from "./orderSummary";
@@ -98,7 +98,6 @@ const CheckoutDetails = () => {
   const regex = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
 
   const formValidation = (event: any) => {
-
     event.preventDefault();
 
     if (state.name.trim() === "") dispatch({ type: "nameBlank", value: true });
@@ -113,7 +112,7 @@ const CheckoutDetails = () => {
     if (state.eMoneyNumber.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyNumberBlank", value: true });
     if (state.eMoneyPin.trim() === "" && state.eMoney === true) dispatch({ type: "eMoneyPinBlank", value: true });
 
-    if( 
+    if (
       state.name.trim() !== "" &&
       state.email.trim() !== "" &&
       regex.test(state.email) &&
@@ -122,10 +121,11 @@ const CheckoutDetails = () => {
       state.zip.trim() !== "" &&
       state.city.trim() !== "" &&
       state.country.trim() !== "" &&
-      ((state.eMoney === true && state.eMoneyNumber.trim() !== "" && state.eMoneyPin.trim() !== "") || state.COD === true)
-      )
-      {setShowModal((prevValue) => true);}
-    
+      ((state.eMoney === true && state.eMoneyNumber.trim() !== "" && state.eMoneyPin.trim() !== "") ||
+        state.COD === true)
+    ) {
+      setShowModal((prevValue) => true);
+    }
   };
 
   return (
@@ -338,6 +338,7 @@ const CheckoutDetails = () => {
                     e-Money Number
                   </label>
                   <input
+                    type="number"
                     className={state.eMoneyNumberBlank ? `${styles.input} ${styles.inputError}` : styles.input}
                     onChange={(event) => {
                       dispatch({ type: "eMoneyNumber", value: event?.target.value });
@@ -346,8 +347,11 @@ const CheckoutDetails = () => {
                   />
                 </div>
                 <div>
-                  <label className={state.eMoneyPinBlank ? `${styles.label} ${styles.labelError}` : styles.label}>e-Money PIN</label>
+                  <label className={state.eMoneyPinBlank ? `${styles.label} ${styles.labelError}` : styles.label}>
+                    e-Money PIN
+                  </label>
                   <input
+                    type="number"
                     className={state.eMoneyPinBlank ? `${styles.input} ${styles.inputError}` : styles.input}
                     onChange={(event) => {
                       dispatch({ type: "eMoneyPin", value: event?.target.value });

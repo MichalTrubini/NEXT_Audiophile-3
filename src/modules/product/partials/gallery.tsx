@@ -48,7 +48,7 @@ const Gallery:React.FC<IPage> = (props) => {
       </div>
       <div className={`${styles.imageContainer} ${styles.imageTablet} ${styles.imageContainerTwo}`}>
         <Image
-          src={productData[0].gallery.second.mobile}
+          src={productData[0].gallery.second.tablet}
           alt={productData[0].name}
           width='554'
           height='348'
@@ -57,7 +57,7 @@ const Gallery:React.FC<IPage> = (props) => {
       </div>
       <div className={`${styles.imageContainer} ${styles.imageDesktop} ${styles.imageContainerTwo}`}>
         <Image
-          src={productData[0].gallery.second.mobile}
+          src={productData[0].gallery.second.desktop}
           alt={productData[0].name}
           width='445'
           height='280'
@@ -75,7 +75,7 @@ const Gallery:React.FC<IPage> = (props) => {
       </div>
       <div className={`${styles.imageContainer} ${styles.imageTablet} ${styles.imageContainerThree}`}>
         <Image
-          src={productData[0].gallery.third.mobile}
+          src={productData[0].gallery.third.tablet}
           alt={productData[0].name}
           width='790'
           height='736'
@@ -84,7 +84,7 @@ const Gallery:React.FC<IPage> = (props) => {
       </div>
       <div className={`${styles.imageContainer} ${styles.imageDesktop} ${styles.imageContainerThree}`}>
         <Image
-          src={productData[0].gallery.third.mobile}
+          src={productData[0].gallery.third.desktop}
           alt={productData[0].name}
           width='635'
           height='592'

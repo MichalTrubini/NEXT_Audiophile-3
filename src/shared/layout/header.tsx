@@ -25,10 +25,6 @@ const Header = () => {
 
   const { cartCtx } = useContext(CartContext);
 
-/*   const orderedQtyContext = cartCtx
-    .map((item: any) => item.qty)
-    .reduce((partialSum: number, a: number) => partialSum + a, 0); */
-
 useEffect(() => {
   const orderedQty = cartCtx.length;
   setQtyInCart(orderedQty)

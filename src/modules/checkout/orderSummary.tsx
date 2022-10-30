@@ -4,12 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import CartContext from "../../store/cart-context";
 import { useContext } from "react";
+import {IModal} from '../../shared/types/types'
 
-interface IModal {
-  closeModal(): any;
-}
-
-const OrderSummary: React.FC<IModal> = (props) => {
+const OrderSummary: React.FC<IModal> = () => {
   const { cartCtx } = useContext(CartContext);
   const { setCartCtx } = useContext(CartContext);
 

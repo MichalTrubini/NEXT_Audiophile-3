@@ -1,10 +1,7 @@
 import styles from './pageTitle.module.css'
+import {ITitle} from '../../shared/types/types'
 
-interface Title {
-    title: string
-}
-
-const PageTitle: React.FC<Title> = (props) => {
+const PageTitle: React.FC<ITitle> = (props) => {
     return (
         <div className={styles.title}>
             <h1 className={styles.header}>{props.title}</h1>
