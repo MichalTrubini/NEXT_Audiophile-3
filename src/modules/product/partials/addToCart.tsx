@@ -15,8 +15,7 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
   };
 
   const inputHandler = (event: any) => {
-    if (event.target.value.trim() < 0) return;
-    if (!Number.isInteger(Number(event.target.value.trim()))) return;
+    if(event.target.value.trim() > 100) return;
     setInputQty(event.target.value.trim());
   };
 
@@ -71,7 +70,7 @@ const AddToCart: React.FC<IAddToCart> = (props) => {
         <p id="minusQty" className={`${styles.qtyHandler} ${styles.qtyHandlerMinus}`} onClick={qtyHandler}>
           -
         </p>
-        <input type="number" className={styles.input} value={inputQty} onChange={inputHandler} />
+        <input type="number" className={styles.input} value={inputQty} onChange={inputHandler} onKeyDown={(evt) => ["e", ".",",", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}/>
         <p id="addQty" className={`${styles.qtyHandler} ${styles.qtyHandlerPlus}`} onClick={qtyHandler}>
           +
         </p>
