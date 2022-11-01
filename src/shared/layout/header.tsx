@@ -17,10 +17,12 @@ const Header = () => {
 
   const showCartHandler = () => {
     setShowCart((prevValue) => !prevValue);
+    setShowMenu(false);
   };
 
   const showMenuHandler = () => {
     setShowMenu((prevValue) => !prevValue);
+    setShowCart(false);
   };
 
   const { cartCtx } = useContext(CartContext);
