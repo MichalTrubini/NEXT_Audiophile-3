@@ -25,10 +25,6 @@
   position: relative;
 }
 
-.menu {
-  display: none;
-}
-
 .bubble {
   position: absolute;
   width: 18px;
@@ -44,6 +40,7 @@
   border: 2px solid var(--white);
   border-radius: 35% 35%;
 }
+
 
 @media screen and (min-width: 768px) {
   .header {
@@ -70,28 +67,10 @@
     display: none;
   }
 
-  .menu {
-    display: flex;
-    gap: 3.4rem;
-    justify-self: center;
-  }
-
-  .listItem {
-    color: var(--white);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.3rem;
-    line-height: 2.5rem;
-    letter-spacing: 2px;
-  }
-
-  .logoContainer:hover, .listItem:hover, .cartContainer {
+  .logoContainer:hover, .cartContainer {
     cursor: pointer;
   }
 
-  .listItem:hover {
-    color: var(--orange);
-  } 
 }
 
 @media screen and (min-width: 1440px) {

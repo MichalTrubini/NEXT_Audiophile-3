@@ -1,33 +1,18 @@
 import styles from "./footer.module.css";
-import logo from "../../../public/assets/shared/desktop/logo.svg";
 import Image from "next/image";
-import Link from "next/link";
 import facebook from "../../../public/assets/shared/desktop/icon-facebook.svg";
 import twitter from "../../../public/assets/shared/desktop/icon-twitter.svg";
 import instagram from "../../../public/assets/shared/desktop/icon-instagram.svg";
-
+import SiteNavigation from "../components/UI/siteNavigation";
+import Logo from "../components/UI/logo";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
-          <Image src={logo} alt="audiophile" />
+          <Logo />
         </div>
-        <ul className={styles.menu}>
-          <Link href="/">
-            <li className={styles.listItem}>home</li>
-          </Link>
-          <Link href="/category/headphones">
-            <li className={styles.listItem}>headphones</li>
-          </Link>
-          <Link href="/category/speakers">
-            <li className={styles.listItem}>speakers</li>
-          </Link>
-          <Link href="/category/earphones">
-            <li className={styles.listItem}>earphones</li>
-          </Link>
-        </ul>
-
+        <SiteNavigation />
         <p className={styles.about}>
           Audiophile is an all in one stop to fulfill your audio needs. We&apos;re a
           small team of music lovers and sound specialists who are devoted to
