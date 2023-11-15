@@ -5,14 +5,16 @@ interface LayoutProps {
   children?: React.ReactNode;
 }
 
-const Layout:React.FC<LayoutProps> = (props) => {
-
+const Layout: React.FC<LayoutProps> = (props) => {
   return (
-    <div className='page'>
-      <Header />
-      <main>{props.children}</main>
-      <Footer />
-    </div>
+    <>
+      <div id="Portal"></div>
+      <div className="page">
+        <Header />
+        <main>{props.children}</main>
+        <Footer />
+      </div>
+    </>
   );
 };
 
